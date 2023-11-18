@@ -3,7 +3,12 @@ package com.software1t.selldesk.app
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.software1t.selldesk.R
 import com.software1t.selldesk.base.BaseActivity
 import com.software1t.selldesk.databinding.ActivityMainBinding
