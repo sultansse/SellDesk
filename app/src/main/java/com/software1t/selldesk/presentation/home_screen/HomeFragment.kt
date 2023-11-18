@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun prepareView(savedInstanceState: Bundle?) {
         binding.rvCars.adapter = adapter
         initObservers()
-//        viewModel.setEvent(HomeContract.Event.OnFetchCars)
+        viewModel.setEvent(HomeContract.Event.OnFetchCars)
 //        viewModel.setEvent(HomeContract.Event.OnCarsItemClicked(car = null))
     }
 

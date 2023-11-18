@@ -9,12 +9,6 @@
 
     <!--    todo appbar -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="30sp" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cars"
         android:layout_width="match_parent"
