@@ -19,6 +19,7 @@ class MyRepositoryImpl(
     override suspend fun getAllMyData(): Flow<Resource<List<CarUiModel>>> {
         return flow {
             try {
+                emit(Resource.Loading)
                 val local = localDataSource.getAllMyData()
                 emit(Resource.Success(local))
             } catch (ex1: Exception) {

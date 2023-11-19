@@ -10,7 +10,7 @@ data class CarUiModel(
     val description: String,
     val city: String,
     val isLiked: Boolean,
-    val postDate: Date,
+    val postDate: String,
     val postViewedCount: Long,
     val postLikedCount: Long,
 )
