@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.appsamurai.storyly.StorylyInit
 import com.software1t.selldesk.base.BaseFragment
+import com.software1t.selldesk.base.adapter.CompositeAdapter
 import com.software1t.selldesk.common.constants.Constants.Companion.STORYLY_INSTANCE_TOKEN
 import com.software1t.selldesk.databinding.FragmentHomeBinding
 import com.software1t.selldesk.presentation.home_screen.adapter.CarsAdapter
@@ -23,24 +25,41 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
         get() = FragmentHomeBinding::inflate
 
-    private val carsAdapter: CarsAdapter by lazy {
-        CarsAdapter {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-            findNavController().navigate(action)
-        }
-    }
-    private val categoryAdapter: CategoryAdapter by lazy {
-        CategoryAdapter {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-            findNavController().navigate(action)
-        }
+
+
+
+//    private val carsAdapter: CarsAdapter by lazy {
+//        CarsAdapter {
+//            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+//            findNavController().navigate(action)
+//        }
+//    }
+//    private val categoryAdapter: CategoryAdapter by lazy {
+//        CategoryAdapter {
+//            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+//            findNavController().navigate(action)
+//        }
+//    }
+
+    private val compositeAdapter by lazy {
+        CompositeAdapter.Builder()
+            .add(CarsAdapter(::goToDetails))
+            .add(CategoryAdapter(::goToDetails))
+//            .add(BookingAdapter())
+//            .add(AuthAdapter { })
+            .build()
     }
     private val viewModel: HomeViewModel by viewModel()
 
     override fun prepareView(savedInstanceState: Bundle?) {
-        binding.rvCars.adapter = carsAdapter
-        binding.rvCategories.adapter = categoryAdapter
         binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+        binding.recyclerView.adapter = compositeAdapter
+
+        viewModel.listItems.observe(viewLifecycleOwner, Observer {
+            it ?: return@Observer
+            compositeAdapter.submitList(it)
+        })
+
         initObservers()
         viewModel.setEvent(HomeContract.Event.OnFetchCars)
         viewModel.setEvent(HomeContract.Event.OnGetCategories)
@@ -51,6 +70,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
+                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
 
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
@@ -63,26 +83,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                         is HomeContract.CarsState.Success -> {
                             val data = state.cars
-                            carsAdapter.submitList(data)
+//                            carsAdapter.submitList(data)
                             binding.loadingPb.isVisible = false
                         }
                     }
 
-                    when (val state = it.categoryState) {
-                        is HomeContract.CategoryState.Idle -> {
-                            binding.loadingPb.isVisible = false
-                        }
-
-                        is HomeContract.CategoryState.Loading -> {
-                            binding.loadingPb.isVisible = true
-                        }
-
-                        is HomeContract.CategoryState.Success -> {
-                            val data = state.categories
-                            categoryAdapter.submitList(data)
-                            binding.loadingPb.isVisible = false
-                        }
-                    }
+//                    when (val state = it.categoryState) {
+//                        is HomeContract.CategoryState.Idle -> {
+//                            binding.loadingPb.isVisible = false
+//                        }
+//
+//                        is HomeContract.CategoryState.Loading -> {
+//                            binding.loadingPb.isVisible = true
+//                        }
+//
+//                        is HomeContract.CategoryState.Success -> {
+//                            val data = state.categories
+//                            categoryAdapter.submitList(data)
+//                            binding.loadingPb.isVisible = false
+//                        }
+//                    }
                 }
             }
         }
@@ -99,5 +119,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
             }
         }
+    }
+
+    private fun goToDetails() {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+        findNavController().navigate(action)
     }
 }

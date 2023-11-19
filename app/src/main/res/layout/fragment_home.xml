@@ -37,25 +37,12 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_categories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/storyly_view_holder"
-        app:spanCount="3"
-        tools:itemCount="8"
-        tools:listitem="@layout/grid_table_item" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cars"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_categories"
+        app:layout_constraintTop_toBottomOf="@id/storyly_view_holder"
         tools:listitem="@layout/car_item" />
 
     <ProgressBar

@@ -1,7 +1,10 @@
 package com.software1t.selldesk.presentation.home_screen
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.software1t.selldesk.base.BaseViewModel
+import com.software1t.selldesk.base.adapter.DelegateAdapterModel
 import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.domain.GetCategoriesUseCase
 import com.software1t.selldesk.domain.GetMyDataUseCase
@@ -12,6 +15,27 @@ class HomeViewModel(
     private val getMyData: GetMyDataUseCase,
     private val getCategories: GetCategoriesUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
+
+    private val _listItems = MutableLiveData<List<DelegateAdapterModel>>()
+    val listItems : LiveData<List<DelegateAdapterModel>>
+        get() = _listItems
+
+//    private val _compositeItems : MutableStateFlow<State> = MutableStateFlow(initialState)
+//    val compositeItems = _compositeItems.asStateFlow()
+
+//    private fun updateList(listModels: List<DelegateAdapterModel>) {
+//        val list = listItems.value ?: mutableListOf()
+//        listModels.forEach {
+//            list.add(it)
+//        }
+//        _listItems.value = list
+//    }
+
+    private fun updateList(listModels: List<DelegateAdapterModel>) {
+        val newList = listModels.toMutableList()
+        _listItems.value = newList.toList()
+    }
+
 
     override fun createInitialState(): HomeContract.State {
         return HomeContract.State(
@@ -55,6 +79,7 @@ class HomeViewModel(
                     }
 
                     is Resource.Success -> {
+                        updateList(it.data)
                         setState { copy(carsState = HomeContract.CarsState.Success(it.data)) }
                     }
 
@@ -68,8 +93,6 @@ class HomeViewModel(
     }
 
     private fun getCategories() {
-//        its local buttons i just do it as recyclerview instead of gridlayout.
-//        why its local? i just wanted to demonstrate delegateAdapter (multiAdapter)
         viewModelScope.launch {
             getCategories.invoke().collect() {
                 when (it) {
