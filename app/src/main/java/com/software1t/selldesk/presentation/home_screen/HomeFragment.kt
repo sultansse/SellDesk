@@ -9,7 +9,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.appsamurai.storyly.StorylyInit
+import com.appsamurai.storyly.StorylyView
 import com.software1t.selldesk.base.BaseFragment
+import com.software1t.selldesk.common.constants.Constants.Companion.STORYLY_INSTANCE_TOKEN
 import com.software1t.selldesk.databinding.FragmentHomeBinding
 import com.software1t.selldesk.presentation.home_screen.adapter.CarsAdapter
 import kotlinx.coroutines.launch
@@ -32,6 +35,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         initObservers()
         viewModel.setEvent(HomeContract.Event.OnFetchCars)
 //        viewModel.setEvent(HomeContract.Event.OnCarsItemClicked(car = null))
+
+
+        binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+
+        val storylyView = StorylyView(requireContext())
+        storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+        binding.storylyViewHolder.addView(storylyView)
     }
 
     private fun initObservers() {

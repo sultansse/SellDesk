@@ -68,4 +68,6 @@ dependencies {
     implementation(libs.koin.android.navigation)
     implementation(libs.koin.android.workmanager)
 
+//    other
+    implementation(libs.storyly)
 }

@@ -13,6 +13,7 @@ koin_version = "3.5.0"
 lifecycle = "2.6.2"
 activityKtx = "1.8.1"
 library = "8.0.2"
+storyly = "1.32.5"
 
 [libraries]
 # core
@@ -42,6 +43,9 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref ="
 koin-android-compat = { group = "io.insert-koin", name = "koin-android-compat", version.ref ="koin_version" }
 koin-android-workmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref ="koin_version" }
 koin-android-navigation = { group = "io.insert-koin", name = "koin-androidx-navigation", version.ref ="koin_version" }
+
+#other
+storyly = { group = "com.appsamurai.storyly", name = "storyly", version.ref = "storyly" }
 
 
 [plugins]
