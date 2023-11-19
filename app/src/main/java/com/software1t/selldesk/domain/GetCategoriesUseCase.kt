@@ -5,8 +5,11 @@ import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import com.software1t.selldesk.presentation.home_screen.model.CategoryUiModel
 import kotlinx.coroutines.flow.Flow
 
-interface MyRepository {
+class GetCategoriesUseCase (
+    private val repository: MyRepository
+) {
 
-    suspend fun getAllMyData(): Flow<Resource<List<CarUiModel>>>
-    suspend fun getCategories(): Flow<Resource<List<CategoryUiModel>>>
+    suspend operator fun invoke() : Flow<Resource<List<CategoryUiModel>>> {
+        return repository.getCategories()
+    }
 }

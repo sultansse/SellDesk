@@ -3,6 +3,7 @@ package com.software1t.selldesk.data
 import android.annotation.SuppressLint
 import com.software1t.selldesk.R
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
+import com.software1t.selldesk.presentation.home_screen.model.CategoryUiModel
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -111,6 +112,41 @@ class MyData {
             ),
 
             )
+
+
+
+        val categories: List<CategoryUiModel> = listOf(
+            CategoryUiModel(
+                id = 0,
+                label = "Машины",
+                image = R.drawable.ic_heart_filled,
+            ),
+            CategoryUiModel(
+                id = 1,
+                label = "Запчасти",
+                image = R.drawable.ic_heart_filled,
+            ),
+            CategoryUiModel(
+                id = 2,
+                label = "Страхование",
+                image = R.drawable.ic_heart_filled,
+            ),
+            CategoryUiModel(
+                id = 3,
+                label = "Новые авто",
+                image = R.drawable.ic_heart_filled,
+            ),
+            CategoryUiModel(
+                id = 5,
+                label = "Ремонт и услуги",
+                image = R.drawable.ic_heart_filled,
+            ),
+            CategoryUiModel(
+                id = 6,
+                label = "Штрафы и сервисы",
+                image = R.drawable.ic_heart_filled,
+            ),
+        )
 
     }
 }

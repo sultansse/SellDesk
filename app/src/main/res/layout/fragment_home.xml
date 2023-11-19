@@ -11,21 +11,21 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/white"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:elevation="4dp"
-        android:background="@color/white"
-        app:toolbar_title="@string/app_name"
-        app:toolbar_back_btn_visibility="false" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:toolbar_back_btn_visibility="false"
+        app:toolbar_title="@string/app_name" />
 
     <LinearLayout
         android:id="@+id/storyly_view_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:elevation="4dp"
         android:background="@color/white"
+        android:elevation="4dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
@@ -36,15 +36,18 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-
-    <!--    <GridLayout-->
-    <!--        android:id="@+id/gl_categories"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storyly_view_holder"
+        app:spanCount="3"
+        tools:itemCount="8"
+        tools:listitem="@layout/grid_table_item" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cars"
@@ -52,7 +55,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/storyly_view_holder"
+        app:layout_constraintTop_toBottomOf="@id/rv_categories"
         tools:listitem="@layout/car_item" />
 
     <ProgressBar

@@ -2,6 +2,7 @@ package com.software1t.selldesk.di
 
 import com.software1t.selldesk.data.MyRepositoryImpl
 import com.software1t.selldesk.data.model.LocalDataSource
+import com.software1t.selldesk.domain.GetCategoriesUseCase
 import com.software1t.selldesk.domain.GetMyDataUseCase
 import com.software1t.selldesk.domain.MyRepository
 import com.software1t.selldesk.local.source.LocalDataSourceImpl
@@ -21,10 +22,16 @@ val repositoryModule = module {
 
 val useCaseModule = module {
     factory { GetMyDataUseCase(repository = get()) }
+    factory { GetCategoriesUseCase(repository = get()) }
 }
 
 val viewModelModule = module {
-    viewModel { HomeViewModel(getMyData = get()) }
+    viewModel {
+        HomeViewModel(
+        getMyData = get(),
+        getCategories = get(),
+        )
+    }
 }
 
 val appModule = listOf(dataSourceModule, repositoryModule, useCaseModule, viewModelModule)

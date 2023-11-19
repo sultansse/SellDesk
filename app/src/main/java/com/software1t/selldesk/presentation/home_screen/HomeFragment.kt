@@ -10,20 +10,27 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.appsamurai.storyly.StorylyInit
-import com.appsamurai.storyly.StorylyView
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.common.constants.Constants.Companion.STORYLY_INSTANCE_TOKEN
 import com.software1t.selldesk.databinding.FragmentHomeBinding
 import com.software1t.selldesk.presentation.home_screen.adapter.CarsAdapter
+import com.software1t.selldesk.presentation.home_screen.adapter.CategoryAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
         get() = FragmentHomeBinding::inflate
 
-    private val adapter : CarsAdapter by lazy {
+    private val carsAdapter: CarsAdapter by lazy {
         CarsAdapter {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+            findNavController().navigate(action)
+        }
+    }
+    private val categoryAdapter: CategoryAdapter by lazy {
+        CategoryAdapter {
             val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
             findNavController().navigate(action)
         }
@@ -31,29 +38,48 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModel()
 
     override fun prepareView(savedInstanceState: Bundle?) {
-        binding.rvCars.adapter = adapter
+        binding.rvCars.adapter = carsAdapter
+        binding.rvCategories.adapter = categoryAdapter
+        binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
         initObservers()
         viewModel.setEvent(HomeContract.Event.OnFetchCars)
+        viewModel.setEvent(HomeContract.Event.OnGetCategories)
 //        viewModel.setEvent(HomeContract.Event.OnCarsItemClicked(car = null))
-
-
-        binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
     }
 
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
+
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
                             binding.loadingPb.isVisible = false
                         }
+
                         is HomeContract.CarsState.Loading -> {
                             binding.loadingPb.isVisible = true
                         }
+
                         is HomeContract.CarsState.Success -> {
-                            val data = state.posts
-                            adapter.submitList(data)
+                            val data = state.cars
+                            carsAdapter.submitList(data)
+                            binding.loadingPb.isVisible = false
+                        }
+                    }
+
+                    when (val state = it.categoryState) {
+                        is HomeContract.CategoryState.Idle -> {
+                            binding.loadingPb.isVisible = false
+                        }
+
+                        is HomeContract.CategoryState.Loading -> {
+                            binding.loadingPb.isVisible = true
+                        }
+
+                        is HomeContract.CategoryState.Success -> {
+                            val data = state.categories
+                            categoryAdapter.submitList(data)
                             binding.loadingPb.isVisible = false
                         }
                     }

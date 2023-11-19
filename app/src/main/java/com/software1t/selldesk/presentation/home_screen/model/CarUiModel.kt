@@ -1,7 +1,5 @@
 package com.software1t.selldesk.presentation.home_screen.model
 
-import java.util.Date
-
 data class CarUiModel(
     val id: Int,
     val name: String,
