@@ -7,16 +7,25 @@
     android:background="@color/home_back"
     android:orientation="vertical">
 
-    <!--    todo appbar -->
+    <com.software1t.selldesk.presentation.home_screen.view.ToolbarView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:toolbar_title="@string/app_name"
+        app:toolbar_back_btn_visibility="false" />
 
     <LinearLayout
         android:id="@+id/storyly_view_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <com.appsamurai.storyly.StorylyView
             android:id="@+id/storyly_view"

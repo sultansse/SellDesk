@@ -38,10 +38,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
         binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
-
-        val storylyView = StorylyView(requireContext())
-        storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
-        binding.storylyViewHolder.addView(storylyView)
     }
 
     private fun initObservers() {
