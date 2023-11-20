@@ -2,6 +2,7 @@ package com.software1t.selldesk.data
 
 import android.annotation.SuppressLint
 import com.software1t.selldesk.R
+import com.software1t.selldesk.data.model.CategoryDataModel
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import com.software1t.selldesk.presentation.home_screen.model.CategoryUiModel
 import java.text.SimpleDateFormat
@@ -105,39 +106,48 @@ class MyData {
             )
         )
 
-
-        val categories: List<CategoryUiModel> = listOf(
-            CategoryUiModel(
-                id = 0,
-                label = "Машины",
-                image = R.drawable.ic_heart_filled,
+        val categories: List<CategoryDataModel> = listOf(
+            CategoryDataModel(
+                title = "Машины",
+                icon = R.drawable.ic_heart_filled,
             ),
-            CategoryUiModel(
-                id = 1,
-                label = "Запчасти",
-                image = R.drawable.ic_heart_filled,
+            CategoryDataModel(
+                title = "Страхование",
+                icon = R.drawable.ic_heart_filled,
             ),
-            CategoryUiModel(
-                id = 2,
-                label = "Страхование",
-                image = R.drawable.ic_heart_filled,
+            CategoryDataModel(
+                title = "Новые авто",
+                icon = R.drawable.ic_heart_filled,
             ),
-            CategoryUiModel(
-                id = 3,
-                label = "Новые авто",
-                image = R.drawable.ic_heart_filled,
+            CategoryDataModel(
+                title = "Запчасти",
+                icon = R.drawable.ic_heart_filled,
             ),
-            CategoryUiModel(
-                id = 5,
-                label = "Ремонт и услуги",
-                image = R.drawable.ic_heart_filled,
+            CategoryDataModel(
+                title = "Штрафы и сервисы",
+                icon = R.drawable.ic_heart_filled,
             ),
-            CategoryUiModel(
-                id = 6,
-                label = "Штрафы и сервисы",
-                image = R.drawable.ic_heart_filled,
+            CategoryDataModel(
+                title = "Ремонт и услуги",
+                icon = R.drawable.ic_heart_filled,
             ),
         )
-
+//
+//        val categories: CategoryUiModel = CategoryUiModel(
+//            id = 0,
+//            title1 = "Машины",
+//            title2 = "Страхование",
+//            title3 = "Новые авто",
+//            title4 = "Запчасти",
+//            title5 = "Штрафы и сервисы",
+//            title6 = "Ремонт и услуги",
+//
+//            image1 = R.drawable.ic_heart_filled,
+//            image2 = R.drawable.ic_heart_filled,
+//            image3 = R.drawable.ic_heart_filled,
+//            image4 = R.drawable.ic_heart_filled,
+//            image5 = R.drawable.ic_heart_filled,
+//            image6 = R.drawable.ic_heart_filled,
+//        )
     }
 }

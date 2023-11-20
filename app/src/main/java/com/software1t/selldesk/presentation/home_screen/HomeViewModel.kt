@@ -12,6 +12,7 @@ import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
+    private val itemComposer: HomeComposer,
     private val getMyData: GetMyDataUseCase,
     private val getCategories: GetCategoriesUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
@@ -22,20 +23,6 @@ class HomeViewModel(
 
 //    private val _compositeItems : MutableStateFlow<State> = MutableStateFlow(initialState)
 //    val compositeItems = _compositeItems.asStateFlow()
-
-//    private fun updateList(listModels: List<DelegateAdapterModel>) {
-//        val list = listItems.value ?: mutableListOf()
-//        listModels.forEach {
-//            list.add(it)
-//        }
-//        _listItems.value = list
-//    }
-
-    private fun updateList(listModels: List<DelegateAdapterModel>) {
-        val newList = listModels.toMutableList()
-        _listItems.value = newList.toList()
-    }
-
 
     override fun createInitialState(): HomeContract.State {
         return HomeContract.State(
@@ -57,13 +44,14 @@ class HomeViewModel(
             }
 
             is HomeContract.Event.OnGetCategories -> {
-                getCategories()
+                fetchCategories()
             }
         }
     }
 
-    private fun setSelectedCar(car: CarUiModel?) {
-        setState { copy(selectedCar = car) }
+    private fun updateAdapters(model: DelegateAdapterModel) {
+        val items = itemComposer.compose(model)
+        _listItems.value = items
     }
 
     private fun fetchCars() {
@@ -79,7 +67,6 @@ class HomeViewModel(
                     }
 
                     is Resource.Success -> {
-                        updateList(it.data)
                         setState { copy(carsState = HomeContract.CarsState.Success(it.data)) }
                     }
 
@@ -92,28 +79,13 @@ class HomeViewModel(
         }
     }
 
-    private fun getCategories() {
-        viewModelScope.launch {
-            getCategories.invoke().collect() {
-                when (it) {
-                    is Resource.Loading -> {
-                        setState { copy(categoryState = HomeContract.CategoryState.Loading) }
-                    }
-
-                    is Resource.Empty -> {
-                        setState { copy(categoryState = HomeContract.CategoryState.Idle) }
-                    }
-
-                    is Resource.Success -> {
-                        setState { copy(categoryState = HomeContract.CategoryState.Success(it.data)) }
-                    }
-
-                    is Resource.Error -> {
-                        setEffect { HomeContract.Effect.ShowError(message = it.exception.message) }
-                    }
-                }
-            }
-        }
+    private fun setSelectedCar(car: CarUiModel?) {
+        setState { copy(selectedCar = car) }
     }
 
+    private fun fetchCategories() {
+        viewModelScope.launch {
+            updateAdapters(getCategories.invoke())
+        }
+    }
 }

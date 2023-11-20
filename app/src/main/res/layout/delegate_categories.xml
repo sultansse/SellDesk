@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:columnCount="3"
+    android:rowCount="2">
+
+    <com.software1t.selldesk.presentation.home_screen.view.SquareLinearLayoutView
+        android:id="@+id/squareLinearLayoutView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:background="@color/purple"
+        app:category_title="@string/app_name"
+        app:src_icon="@drawable/ic_heart_filled" />
+
+    <com.software1t.selldesk.presentation.home_screen.view.SquareLinearLayoutView
+        android:id="@+id/squareLinearLayoutView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:background="@color/purple"
+        app:category_title="@string/app_name"
+        app:src_icon="@drawable/ic_heart_filled" />
+
+    <com.software1t.selldesk.presentation.home_screen.view.SquareLinearLayoutView
+        android:id="@+id/squareLinearLayoutView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        app:category_title="sssss"
+        app:src_icon="@drawable/ic_launcher_foreground" />
+
+    <com.software1t.selldesk.presentation.home_screen.view.SquareLinearLayoutView
+        android:id="@+id/squareLinearLayoutView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:background="@color/purple"
+        app:category_title="@string/app_name"
+        app:src_icon="@drawable/ic_heart_filled" />
+
+    <com.software1t.selldesk.presentation.home_screen.view.SquareLinearLayoutView
+        android:id="@+id/squareLinearLayoutView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:background="@color/purple"
+        app:category_title="@string/app_name"
+        app:src_icon="@drawable/ic_heart_filled" />
+
+    <com.software1t.selldesk.presentation.home_screen.view.SquareLinearLayoutView
+        android:id="@+id/squareLinearLayoutView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="1dp"
+        android:background="@color/purple"
+        app:category_title="@string/app_name"
+        app:src_icon="@drawable/ic_heart_filled" />
+</GridLayout>

@@ -4,4 +4,9 @@
         <attr name="toolbar_title" format="string"/>
         <attr name="toolbar_back_btn_visibility" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="SquareLinearLayoutView">
+        <attr name="category_title" format="string"/>
+        <attr name="src_icon" format="reference" />
+    </declare-styleable>
 </resources>

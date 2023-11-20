@@ -25,35 +25,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
         get() = FragmentHomeBinding::inflate
 
-
-
-
-//    private val carsAdapter: CarsAdapter by lazy {
-//        CarsAdapter {
-//            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-//            findNavController().navigate(action)
-//        }
-//    }
-//    private val categoryAdapter: CategoryAdapter by lazy {
-//        CategoryAdapter {
-//            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-//            findNavController().navigate(action)
-//        }
-//    }
+    private val carsAdapter: CarsAdapter by lazy {
+        CarsAdapter {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+            findNavController().navigate(action)
+        }
+    }
 
     private val compositeAdapter by lazy {
         CompositeAdapter.Builder()
-            .add(CarsAdapter(::goToDetails))
             .add(CategoryAdapter(::goToDetails))
-//            .add(BookingAdapter())
-//            .add(AuthAdapter { })
             .build()
     }
     private val viewModel: HomeViewModel by viewModel()
 
     override fun prepareView(savedInstanceState: Bundle?) {
         binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
-        binding.recyclerView.adapter = compositeAdapter
+        binding.rvWidgets.adapter = compositeAdapter
+        binding.rvCars.adapter = carsAdapter
 
         viewModel.listItems.observe(viewLifecycleOwner, Observer {
             it ?: return@Observer
@@ -83,26 +72,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                         is HomeContract.CarsState.Success -> {
                             val data = state.cars
-//                            carsAdapter.submitList(data)
+                            carsAdapter.submitList(data)
                             binding.loadingPb.isVisible = false
                         }
                     }
 
-//                    when (val state = it.categoryState) {
-//                        is HomeContract.CategoryState.Idle -> {
-//                            binding.loadingPb.isVisible = false
-//                        }
-//
-//                        is HomeContract.CategoryState.Loading -> {
-//                            binding.loadingPb.isVisible = true
-//                        }
-//
-//                        is HomeContract.CategoryState.Success -> {
-//                            val data = state.categories
-//                            categoryAdapter.submitList(data)
-//                            binding.loadingPb.isVisible = false
-//                        }
-//                    }
                 }
             }
         }
