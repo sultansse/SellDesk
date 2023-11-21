@@ -2,10 +2,8 @@ package com.software1t.selldesk.data.repository
 
 import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.data.model.CategoryDataModel
-import com.software1t.selldesk.data.repository.LocalDataSource
 import com.software1t.selldesk.domain.MyRepository
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
-import com.software1t.selldesk.presentation.home_screen.model.CategoryUiModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -27,9 +25,5 @@ class MyRepositoryImpl(
             }
 
         }
-    }
-
-    override suspend fun getCategories(): List<CategoryDataModel> {
-        return localDataSource.getCategories()
     }
 }

@@ -7,7 +7,7 @@ class HomeComposer {
         val items = mutableListOf<DelegateAdapterModel>()
 
 //        categories
-        items.add(model)
+//        items.add(model)
 
         return items
     }

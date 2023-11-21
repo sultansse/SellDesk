@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import com.software1t.selldesk.R
 import com.software1t.selldesk.data.model.CategoryDataModel
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
-import com.software1t.selldesk.presentation.home_screen.model.CategoryUiModel
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -131,23 +130,14 @@ class MyData {
                 title = "Ремонт и услуги",
                 icon = R.drawable.ic_heart_filled,
             ),
-        )
-//
-//        val categories: CategoryUiModel = CategoryUiModel(
-//            id = 0,
-//            title1 = "Машины",
-//            title2 = "Страхование",
-//            title3 = "Новые авто",
-//            title4 = "Запчасти",
-//            title5 = "Штрафы и сервисы",
-//            title6 = "Ремонт и услуги",
-//
-//            image1 = R.drawable.ic_heart_filled,
-//            image2 = R.drawable.ic_heart_filled,
-//            image3 = R.drawable.ic_heart_filled,
-//            image4 = R.drawable.ic_heart_filled,
-//            image5 = R.drawable.ic_heart_filled,
-//            image6 = R.drawable.ic_heart_filled,
-//        )
+            CategoryDataModel(
+                title = "Авто от SellDesk",
+                icon = R.drawable.ic_heart_filled,
+            ),
+            CategoryDataModel(
+                title = "Sell Desk Гид",
+                icon = R.drawable.ic_heart_filled,
+            ),
+            )
     }
 }
