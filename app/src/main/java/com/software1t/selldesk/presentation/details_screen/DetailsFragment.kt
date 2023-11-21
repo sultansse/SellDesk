@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.databinding.FragmentDetailsBinding
-import com.software1t.selldesk.databinding.FragmentHomeBinding
 
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
@@ -15,8 +15,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private val viewModel: DetailsViewModel by viewModels()
 
+    val args: DetailsFragmentArgs by navArgs()
+
 
     override fun prepareView(savedInstanceState: Bundle?) {
-
+        binding.textView.text = "some detailed text and ${args.carId}"
     }
 }

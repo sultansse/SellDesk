@@ -1,4 +1,4 @@
-package com.software1t.selldesk.presentation.home_screen.view
+package com.software1t.selldesk.common.view
 
 import android.content.Context
 import android.util.AttributeSet

@@ -10,7 +10,7 @@ import com.software1t.selldesk.databinding.ItemCarBinding
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 
 class CarsAdapter (
-    private val clickFunc : (() -> Unit)? = null
+    private val clickFunc: ((Int) -> Unit)? = null
 ) : BaseRecyclerAdapter<CarUiModel, ItemCarBinding, CarsAdapter.CarViewHolder>(CarItemDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -24,12 +24,15 @@ class CarsAdapter (
 
     class CarViewHolder (
         private val binding : ItemCarBinding,
-        private val click : (() -> Unit)? = null
+        private val click: ((Int) -> Unit)? = null
     ) : BaseViewHolder<CarUiModel, ItemCarBinding>(binding) {
 
         init {
             binding.root.setOnClickListener {
-                click?.invoke()
+                getRowItem()?.let {
+                    click?.invoke(it.id)
+                }
+
             }
         }
 

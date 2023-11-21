@@ -26,18 +26,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val carsAdapter: CarsAdapter by lazy {
         CarsAdapter {
-            goToDetails()
+            goToDetails(it)
         }
     }
 
     override fun prepareView(savedInstanceState: Bundle?) {
 
-        binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
-        binding.rvCars.adapter = carsAdapter
+        with(binding) {
+            storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+            rvCars.adapter = carsAdapter
+
+//        binding.rvCars.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        }
 
         initObservers()
         viewModel.setEvent(HomeContract.Event.OnFetchCars)
-//        viewModel.setEvent(HomeContract.Event.OnGetCategories)
     }
 
     private fun initObservers() {
@@ -80,8 +83,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun goToDetails() {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+    private fun goToDetails(carId: Int) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(carId)
         navigate(action)
     }
 }

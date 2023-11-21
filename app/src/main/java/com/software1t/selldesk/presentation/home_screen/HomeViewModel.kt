@@ -1,12 +1,10 @@
 package com.software1t.selldesk.presentation.home_screen
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.software1t.selldesk.base.BaseViewModel
-import com.software1t.selldesk.base.adapter.DelegateAdapterModel
 import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.domain.GetMyDataUseCase
+import com.software1t.selldesk.presentation.details_screen.HomeComposer
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import kotlinx.coroutines.launch
 
@@ -14,13 +12,6 @@ class HomeViewModel(
     private val itemComposer: HomeComposer,
     private val getMyData: GetMyDataUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
-
-    private val _listItems = MutableLiveData<List<DelegateAdapterModel>>()
-    val listItems : LiveData<List<DelegateAdapterModel>>
-        get() = _listItems
-
-//    private val _compositeItems : MutableStateFlow<State> = MutableStateFlow(initialState)
-//    val compositeItems = _compositeItems.asStateFlow()
 
     override fun createInitialState(): HomeContract.State {
         return HomeContract.State(
@@ -40,11 +31,6 @@ class HomeViewModel(
                 setSelectedCar(car = item)
             }
         }
-    }
-
-    private fun updateAdapters(model: DelegateAdapterModel) {
-        val items = itemComposer.compose(model)
-        _listItems.value = items
     }
 
     private fun fetchCars() {

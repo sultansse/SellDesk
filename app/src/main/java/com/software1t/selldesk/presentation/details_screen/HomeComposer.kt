@@ -1,4 +1,4 @@
-package com.software1t.selldesk.presentation.home_screen
+package com.software1t.selldesk.presentation.details_screen
 
 import com.software1t.selldesk.base.adapter.DelegateAdapterModel
 
