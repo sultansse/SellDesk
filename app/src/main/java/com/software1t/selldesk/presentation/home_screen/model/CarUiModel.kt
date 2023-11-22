@@ -55,4 +55,13 @@ data class CarUiModel(
             return result
         }
     }
+
+//    "9 500 000 tenge"
+//    "5 200 000 tenge"
+//    "12 000 000 tenge"
+//    "7 800 000 tenge"
+//    "10 500 000 tenge"
+//    "11 700 000 tenge"
+//    "6 500 000 tenge"
+//    "8 300 000 tenge"
 }

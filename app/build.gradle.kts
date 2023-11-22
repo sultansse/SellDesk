@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.safeArgs)
+    id("kotlin-kapt")
 }
 
 android {
@@ -63,11 +64,13 @@ dependencies {
 
 //    koin
     implementation(libs.koin.core)
-    implementation(libs.koin.core.coroutines)
     implementation(libs.koin.android)
-    implementation(libs.koin.android.compat)
-    implementation(libs.koin.android.navigation)
-    implementation(libs.koin.android.workmanager)
+
+//    room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+
 
 //    other
     implementation(libs.storyly)

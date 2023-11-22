@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 fun Any?.isNull() = this == null
 fun Any?.isNotNull() = this != isNull()
 
+val String.Companion.empty get() = ""
+const val tenge = "₸"
 
 //View
 inline fun View.setAttrs(

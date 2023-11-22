@@ -4,12 +4,11 @@ import androidx.lifecycle.viewModelScope
 import com.software1t.selldesk.base.BaseViewModel
 import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.domain.GetMyDataUseCase
-import com.software1t.selldesk.presentation.details_screen.HomeComposer
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val itemComposer: HomeComposer,
+//    private val itemComposer: HomeComposer,
     private val getMyData: GetMyDataUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 
@@ -35,14 +34,10 @@ class HomeViewModel(
 
     private fun fetchCars() {
         viewModelScope.launch {
-            getMyData.invoke().collect() {
+            getMyData.execute().collect() {
                 when (it) {
                     is Resource.Loading -> {
                         setState { copy(carsState = HomeContract.CarsState.Loading) }
-                    }
-
-                    is Resource.Empty -> {
-                        setState { copy(carsState = HomeContract.CarsState.Idle) }
                     }
 
                     is Resource.Success -> {
@@ -50,7 +45,7 @@ class HomeViewModel(
                     }
 
                     is Resource.Error -> {
-                        setEffect { HomeContract.Effect.ShowError(message = it.exception.message) }
+                        setEffect { HomeContract.Effect.ShowError(message = it.errorBody) }
                     }
                 }
 

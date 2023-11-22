@@ -1,105 +1,101 @@
-package com.software1t.selldesk.data
+package com.software1t.selldesk.local
 
-import android.annotation.SuppressLint
 import com.software1t.selldesk.R
 import com.software1t.selldesk.data.model.CategoryDataModel
-import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
-import java.text.SimpleDateFormat
-import java.util.Date
+import com.software1t.selldesk.local.model.CarLocalModel
 
-class MyData {
+
+class MyMockData {
     companion object {
-        @SuppressLint("SimpleDateFormat")
-        val formatter = SimpleDateFormat("dd MMMM")
-        val currentDate = formatter.format(Date())
 
-        val myData: List<CarUiModel> = listOf(
-            CarUiModel(
+        val myMockCars: List<CarLocalModel> = listOf(
+
+            CarLocalModel(
                 id = 1,
                 name = "Lexus",
-                price = "9 500 000 tenge",
+                price = 9500000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Luxurious Lexus with advanced features and superior performance. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Astana",
                 isLiked = true,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1500,
                 postLikedCount = 25,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 2,
                 name = "Honda",
-                price = "5 200 000 tenge",
+                price = 5200000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Efficient Honda model perfect for city commuting. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Almaty",
                 isLiked = true,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1000,
                 postLikedCount = 18,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 3,
                 name = "BMW",
-                price = "12 000 000 tenge",
+                price = 1200000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Sporty BMW with cutting-edge technology and dynamic performance. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Shymkent",
                 isLiked = false,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 2000,
                 postLikedCount = 30,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 4,
                 name = "Toyota",
-                price = "7 800 000 tenge",
+                price = 7800000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Reliable Toyota known for durability and comfortable rides. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Karaganda",
                 isLiked = false,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1700,
                 postLikedCount = 22,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 5,
                 name = "Audi",
-                price = "10 500 000 tenge",
+                price = 10500000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Elegant Audi model with luxurious interiors and innovative technology. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Aktobe",
                 isLiked = false,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1800,
                 postLikedCount = 27,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 6,
                 name = "Mercedes-Benz",
-                price = "11 700 000 tenge",
+                price = 11700000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Classy Mercedes-Benz offering comfort, style, and cutting-edge features. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Pavlodar",
                 isLiked = false,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1900,
                 postLikedCount = 28,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 7,
                 name = "Nissan",
-                price = "6 500 000 tenge",
+                price = 6500000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Nissan model known for reliability and advanced technology. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Taraz",
                 isLiked = true,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1600,
                 postLikedCount = 20,
-            ), CarUiModel(
+            ), CarLocalModel(
                 id = 8,
                 name = "Chevrolet",
-                price = "8 300 000 tenge",
+                price = 8300000,
                 image = R.drawable.ic_launcher_foreground,
                 description = "Chevrolet with a blend of performance and affordability. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 city = "Kostanay",
                 isLiked = false,
-                postDate = currentDate,
+                postDate = "2023-12-31",
                 postViewedCount = 1750,
                 postLikedCount = 23,
             )
@@ -138,6 +134,6 @@ class MyData {
                 title = "Sell Desk Гид",
                 icon = R.drawable.ic_heart_filled,
             ),
-            )
+        )
     }
 }

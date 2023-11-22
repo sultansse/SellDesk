@@ -1,8 +1,42 @@
 package com.software1t.selldesk.common
 
+import com.bumptech.glide.load.HttpException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+
 sealed class Resource<out T> {
     class Success<T>(val data: T) : Resource<T>()
-    class Error(val exception : Exception) : Resource<Nothing>()
+    data class Error(
+        val isNetworkError: Boolean?,
+        val errorCode: Int?,
+        val errorBody: String?
+    ) : Resource<Nothing>()
+
     object Loading : Resource<Nothing>()
-    object Empty : Resource<Nothing>()
+}
+
+//Coroutine caller
+suspend fun <T : Any> safeApiCall(
+    request: suspend () -> T
+): Resource<T> {
+    return withContext(Dispatchers.IO) {
+        try {
+//            _loadingLiveData.postValue(true)
+            val response = request.invoke()
+            Resource.Success(response)
+        } catch (throwable: Throwable) {
+            when (throwable) {
+                is HttpException -> {
+                    Resource.Error(false, throwable.statusCode, throwable.message)
+                }
+
+                else -> {
+                    Resource.Error(true, null, throwable.message)
+                }
+            }
+        } finally {
+//            _loadingLiveData.postValue(false)
+        }
+    }
 }

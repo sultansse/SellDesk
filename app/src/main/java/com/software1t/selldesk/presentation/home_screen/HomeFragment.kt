@@ -1,6 +1,7 @@
 package com.software1t.selldesk.presentation.home_screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -75,6 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     when (it) {
                         is HomeContract.Effect.ShowError -> {
                             val msg = it.message
+                            Log.e("TAG", "initObservers: $msg")
                             Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                         }
                     }
