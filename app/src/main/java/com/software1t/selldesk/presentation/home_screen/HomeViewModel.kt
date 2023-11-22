@@ -8,7 +8,6 @@ import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-//    private val itemComposer: HomeComposer,
     private val getMyData: GetMyDataUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 

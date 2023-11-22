@@ -1,7 +1,6 @@
 package com.software1t.selldesk.presentation.home_screen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -32,16 +31,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun prepareView(savedInstanceState: Bundle?) {
+        initObservers()
 
         with(binding) {
             storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
             rvCars.adapter = carsAdapter
-
-//        binding.rvCars.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         }
 
-        initObservers()
-        viewModel.setEvent(HomeContract.Event.OnFetchCars)
+        with(viewModel) {
+            setEvent(HomeContract.Event.OnFetchCars)
+        }
     }
 
     private fun initObservers() {
@@ -75,9 +74,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 viewModel.effect.collect {
                     when (it) {
                         is HomeContract.Effect.ShowError -> {
-                            val msg = it.message
-                            Log.e("TAG", "initObservers: $msg")
-                            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

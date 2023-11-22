@@ -6,7 +6,8 @@ import com.software1t.selldesk.domain.GetMyDataUseCase
 import com.software1t.selldesk.domain.MyRepository
 import com.software1t.selldesk.domain.mapper.CarDomainUiMapper
 import com.software1t.selldesk.local.mapper.CarLocalDataMapper
-import com.software1t.selldesk.presentation.details_screen.HomeComposer
+import com.software1t.selldesk.presentation.details_screen.DetailsComposer
+import com.software1t.selldesk.presentation.details_screen.DetailsViewModel
 import com.software1t.selldesk.presentation.home_screen.HomeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,7 +15,6 @@ import org.koin.dsl.module
 
 
 val databaseModule = module {
-
     single { provideAppDatabase(context = androidContext()) }
     single { provideCarDAO(appDatabase = get()) }
 }
@@ -33,7 +33,6 @@ val mapperModule = module {
     factory { CarDomainUiMapper() }
 }
 
-
 val dataSourceModule = module {
     factory<LocalDataSource> { provideLocalDataSource(carDao = get(), mapper = get()) }
 }
@@ -44,19 +43,27 @@ val repositoryModule = module {
 
 val useCaseModule = module {
     factory<GetMyDataUseCase> { provideGetMyDataUseCase(repo = get(), mapper = get()) }
-    factory { HomeComposer() }
 }
 
 val viewModelModule = module {
     viewModel {
         HomeViewModel(
-//            itemComposer = get(),
             getMyData = get(),
+        )
+    }
+    viewModel {
+        DetailsViewModel(
+//            itemComposer = get()
         )
     }
 }
 
+val otherClassesModule = module {
+    factory { DetailsComposer() }
+}
+
 val appModule = listOf(
+    otherClassesModule,
     mapperModule,
     databaseModule,
     dataSourceModule,
