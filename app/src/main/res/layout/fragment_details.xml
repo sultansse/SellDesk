@@ -11,6 +11,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.software1t.selldesk.common.view.ToolbarView
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="8dp"
+            app:toolbar_back_btn_visibility="true"
+            app:toolbar_title="@string/app_name" />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_car"
             android:layout_width="match_parent"

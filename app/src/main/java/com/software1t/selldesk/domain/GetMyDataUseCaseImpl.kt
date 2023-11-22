@@ -24,7 +24,7 @@ class GetMyDataUseCaseImpl(
 
         return flow {
             emit(Resource.Loading)
-            delay(1000)
+            delay(3000)
             val response = safeApiCall {
                 val carDomainList = repository.getAllMyData()
                 val carUiList = carMapper.fromList(carDomainList)

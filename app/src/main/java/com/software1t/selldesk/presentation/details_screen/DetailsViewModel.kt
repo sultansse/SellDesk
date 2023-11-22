@@ -39,7 +39,7 @@ class DetailsViewModel(
         )
         val descriptionItem = DescriptionAdapterModel(
             city = "Алматы",
-            generation = "X",
+            generation = "2017 - 2021 XV70",
             mileage = "100 000",
             transmission = "Автомат",
             drive = "Передний",
@@ -51,11 +51,11 @@ class DetailsViewModel(
             dividerItem,
             descriptionItem,
             headerItem,
+            dividerItem,
             headerItem,
             descriptionItem,
+            dividerItem,
             descriptionItem,
-            dividerItem,
-            dividerItem,
             dividerItem,
         )
         _adapterItems.value = myMockCarDetails

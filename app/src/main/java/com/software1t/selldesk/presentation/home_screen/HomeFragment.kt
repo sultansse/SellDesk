@@ -47,7 +47,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
 
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
