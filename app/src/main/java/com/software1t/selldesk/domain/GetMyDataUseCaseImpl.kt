@@ -5,6 +5,7 @@ import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.common.safeApiCall
 import com.software1t.selldesk.domain.model.CarDomainModel
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -15,7 +16,6 @@ interface GetMyDataUseCase {
 
 class GetMyDataUseCaseImpl(
     private val repository: MyRepository,
-//    private val carMapper: CarDomainUiMapper,
     private val carMapper: Mapper<CarDomainModel, CarUiModel>,
 ) : GetMyDataUseCase {
 
@@ -24,7 +24,7 @@ class GetMyDataUseCaseImpl(
 
         return flow {
             emit(Resource.Loading)
-//            delay(4000)
+            delay(3000)
             val response = safeApiCall {
                 val carDomainList = repository.getAllMyData()
                 val carUiList = carMapper.fromList(carDomainList)
