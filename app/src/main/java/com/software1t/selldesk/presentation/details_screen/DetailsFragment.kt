@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -15,13 +14,14 @@ import com.software1t.selldesk.databinding.FragmentDetailsBinding
 import com.software1t.selldesk.presentation.details_screen.adapter.DetailsHeaderAdapter
 import com.software1t.selldesk.presentation.details_screen.adapter.DividerItemAdapter
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDetailsBinding
         get() = FragmentDetailsBinding::inflate
 
-    private val viewModel: DetailsViewModel by viewModels()
+    private val viewModel: DetailsViewModel by viewModel()
     private val args: DetailsFragmentArgs by navArgs()
 
     private val compositeAdapter by lazy {

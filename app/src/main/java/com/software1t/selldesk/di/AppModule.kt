@@ -14,11 +14,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
-val databaseModule = module {
-    single { provideAppDatabase(context = androidContext()) }
-    single { provideCarDAO(appDatabase = get()) }
-}
-
 /*
 val mapperModule = module {
     factory<Mapper<CarLocalModel, CarDataModel>> { provideLocalDataMapper() }
@@ -26,6 +21,11 @@ val mapperModule = module {
     factory<Mapper<CarDomainModel, CarUiModel>> { provideDomainUiMapper() }
 }
 */
+
+val databaseModule = module {
+    single { provideAppDatabase(context = androidContext()) }
+    single { provideCarDAO(appDatabase = get()) }
+}
 
 val mapperModule = module {
     factory { CarLocalDataMapper() }
@@ -45,6 +45,10 @@ val useCaseModule = module {
     factory<GetMyDataUseCase> { provideGetMyDataUseCase(repo = get(), mapper = get()) }
 }
 
+val otherClassesModule = module {
+    factory { DetailsComposer() }
+}
+
 val viewModelModule = module {
     viewModel {
         HomeViewModel(
@@ -53,14 +57,11 @@ val viewModelModule = module {
     }
     viewModel {
         DetailsViewModel(
-//            itemComposer = get()
+            itemComposer = get(),
         )
     }
 }
 
-val otherClassesModule = module {
-    factory { DetailsComposer() }
-}
 
 val appModule = listOf(
     otherClassesModule,
