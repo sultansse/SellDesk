@@ -26,11 +26,30 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/like_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:visibility="gone"
+            android:src="@drawable/ic_heart_filled"
+            android:padding="16dp" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/share_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:visibility="gone"
+            android:src="@drawable/ic_heart_outlined"
+            android:padding="16dp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/news_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Новости"
+            android:visibility="gone"
             app:cornerRadius="8dp"
             android:padding="16dp" />
     </LinearLayout>

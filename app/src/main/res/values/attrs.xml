@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ToolbarView">
-        <attr name="toolbar_title" format="string"/>
+        <attr name="toolbar_title" format="string" />
         <attr name="toolbar_back_btn_visibility" format="boolean" />
+        <attr name="toolbar_news_btn_visibility" format="boolean" />
+        <attr name="toolbar_like_btn_visibility" format="boolean" />
+        <attr name="toolbar_share_btn_visibility" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="SquareLinearLayoutView">

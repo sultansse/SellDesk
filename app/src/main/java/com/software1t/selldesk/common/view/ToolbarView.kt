@@ -18,20 +18,31 @@ class ToolbarView @JvmOverloads constructor(
 
     var backClick: (() -> Unit)? = null
     var newsClick: (() -> Unit)? = null
+    var likeClick: (() -> Unit)? = null
+    var shareClick: (() -> Unit)? = null
 
     init {
         setAttrs(attrs, R.styleable.ToolbarView) {
-            binding.title.text = it.getString(R.styleable.ToolbarView_toolbar_title)
-            binding.backBtn.isVisible =
-                it.getBoolean(R.styleable.ToolbarView_toolbar_back_btn_visibility, false)
+            with(binding) {
+                title.text = it.getString(R.styleable.ToolbarView_toolbar_title)
+                backBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_back_btn_visibility, false)
+                newsBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_news_btn_visibility, false)
+                likeBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_like_btn_visibility, false)
+                shareBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_share_btn_visibility, false)
+            }
+
         }
 
-        binding.backBtn.setOnClickListener {
-            backClick?.invoke()
+        with(binding) {
+            backBtn.setOnClickListener { backClick?.invoke() }
+            newsBtn.setOnClickListener { newsClick?.invoke() }
+            likeBtn.setOnClickListener { likeClick?.invoke() }
+            shareBtn.setOnClickListener { shareClick?.invoke() }
         }
 
-        binding.newsBtn.setOnClickListener {
-            newsClick?.invoke()
-        }
     }
 }
