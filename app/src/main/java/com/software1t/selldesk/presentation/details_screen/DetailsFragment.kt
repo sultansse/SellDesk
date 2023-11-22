@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.base.adapter.CompositeAdapter
 import com.software1t.selldesk.databinding.FragmentDetailsBinding
+import com.software1t.selldesk.presentation.details_screen.adapter.DetailsDescriptionAdapter
 import com.software1t.selldesk.presentation.details_screen.adapter.DetailsHeaderAdapter
 import com.software1t.selldesk.presentation.details_screen.adapter.DividerItemAdapter
 import kotlinx.coroutines.launch
@@ -28,6 +29,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         CompositeAdapter.Builder()
             .add(DetailsHeaderAdapter())
             .add(DividerItemAdapter())
+            .add(DetailsDescriptionAdapter())
             .build()
     }
 

@@ -7,5 +7,15 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="category_sample">This is Category</string>
+    <string name="key_city">Город</string>
+    <string name="value_city">Алматы</string>
+    <string name="key_generation">Поколение</string>
+    <string name="value_generation">2017 - 2021 XV70</string>
+    <string name="key_mileage">Пробег</string>
+    <string name="value_mileage">83 000 км</string>
+    <string name="key_transmission">Коробка передач</string>
+    <string name="value_transmission">автомат</string>
+    <string name="key_drive">Привод</string>
+    <string name="value_drive">Передний привод</string>
 
 </resources>

@@ -4,6 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.software1t.selldesk.base.BaseViewModel
 import com.software1t.selldesk.base.adapter.DelegateAdapterModel
+import com.software1t.selldesk.common.extenshions.tenge
+import com.software1t.selldesk.presentation.details_screen.model.DescriptionAdapterModel
+import com.software1t.selldesk.presentation.details_screen.model.DividerAdapterModel
+import com.software1t.selldesk.presentation.details_screen.model.HeaderAdapterModel
 
 class DetailsViewModel(
     private val itemComposer: DetailsComposer
@@ -13,8 +17,8 @@ class DetailsViewModel(
     val adapterItems: LiveData<List<DelegateAdapterModel>> get() = _adapterItems
 
     private fun updateAdapters(model: DelegateAdapterModel) {
-//        val items = itemComposer.compose(model)
-//        _adapterItems.value = items
+        val items = itemComposer.compose(model)
+        _adapterItems.value = items
     }
 
     override fun createInitialState(): DetailsContract.State {
@@ -25,5 +29,35 @@ class DetailsViewModel(
 
     override fun handleEvent(event: DetailsContract.Event) {
         TODO("Not yet implemented")
+    }
+
+    init {
+        val dividerItem = DividerAdapterModel(true)
+        val headerItem = HeaderAdapterModel(
+            carName = "Toyota Corolla 2021",
+            carPrice = "17 000 000 $tenge",
+        )
+        val descriptionItem = DescriptionAdapterModel(
+            city = "Алматы",
+            generation = "X",
+            mileage = "100 000",
+            transmission = "Автомат",
+            drive = "Передний",
+        )
+
+        val myMockCarDetails = listOf<DelegateAdapterModel>(
+            dividerItem,
+            headerItem,
+            dividerItem,
+            descriptionItem,
+            headerItem,
+            headerItem,
+            descriptionItem,
+            descriptionItem,
+            dividerItem,
+            dividerItem,
+            dividerItem,
+        )
+        _adapterItems.value = myMockCarDetails
     }
 }

@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import com.software1t.selldesk.base.BaseViewHolder
 import com.software1t.selldesk.base.adapter.DelegateAdapter
 import com.software1t.selldesk.databinding.DelegateDetailsHeaderBinding
-import com.software1t.selldesk.presentation.details_screen.model.DetailsUiModel
+import com.software1t.selldesk.presentation.details_screen.model.HeaderAdapterModel
 
 class DetailsHeaderAdapter :
-    DelegateAdapter<DetailsUiModel, DelegateDetailsHeaderBinding, DetailsHeaderAdapter.HeaderViewHolder>(
-        DetailsUiModel::class.java
+    DelegateAdapter<HeaderAdapterModel, DelegateDetailsHeaderBinding, DetailsHeaderAdapter.HeaderViewHolder>(
+        HeaderAdapterModel::class.java
     ) {
 
-    override fun onCreateViewHolder(parent: ViewGroup): BaseViewHolder<DetailsUiModel, DelegateDetailsHeaderBinding> {
+    override fun onCreateViewHolder(parent: ViewGroup): BaseViewHolder<HeaderAdapterModel, DelegateDetailsHeaderBinding> {
         val binding = DelegateDetailsHeaderBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
@@ -21,13 +21,13 @@ class DetailsHeaderAdapter :
 
     class HeaderViewHolder(
         private val binding: DelegateDetailsHeaderBinding,
-    ) : BaseViewHolder<DetailsUiModel, DelegateDetailsHeaderBinding>(binding) {
+    ) : BaseViewHolder<HeaderAdapterModel, DelegateDetailsHeaderBinding>(binding) {
 
         override fun bind() {
             getRowItem()?.let {
                 with(binding) {
-                    tvCarName.text = "it.name"
-                    tvCarPrice.text = "it.price"
+                    tvCarName.text = it.carName
+                    tvCarPrice.text = it.carPrice
                 }
             }
         }

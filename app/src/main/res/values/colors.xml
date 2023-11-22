@@ -4,5 +4,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="home_back">#F3F3F3</color>
     <color name="purple">#673AB7</color>
-    <color name="colorGray">#C6CACC</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray10">#F7F9FA</color>
+    <color name="colorGray20">#F1F3F4</color>
+    <color name="colorGray30">#E3E5E5</color>
+    <color name="colorGray40">#C6CACC</color>
+    <color name="colorGray60">#919699</color>
+    <color name="colorGray80">#5E6366</color>
+    <color name="colorGray90">#3E4345</color>
 </resources>
