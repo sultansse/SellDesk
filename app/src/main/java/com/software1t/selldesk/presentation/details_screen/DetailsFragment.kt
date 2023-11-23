@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.base.adapter.CompositeAdapter
@@ -39,9 +38,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         with(binding) {
             rvComposite.adapter = compositeAdapter
-            toolbar.backClick = {
-                findNavController().popBackStack()
-            }
         }
         with(viewModel) {
             adapterItems.observe(viewLifecycleOwner) {

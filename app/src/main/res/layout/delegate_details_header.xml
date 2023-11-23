@@ -30,7 +30,7 @@
         android:id="@+id/iv_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_heart_filled"
+        android:src="@drawable/ic_favorite_filled"
         android:scaleType="centerCrop"
         android:padding="16dp"
         app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:src="@drawable/ic_heart_outlined"
+        android:src="@drawable/ic_favorite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_car_name" />
 

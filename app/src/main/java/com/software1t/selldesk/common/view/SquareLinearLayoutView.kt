@@ -25,7 +25,7 @@ class SquareLinearLayoutView @JvmOverloads constructor(
             squareBinding.ivIcon.setImageResource(
                 it.getResourceId(
                     R.styleable.SquareLinearLayoutView_src_icon,
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.ic_launcher_app
                 )
             )
             squareBinding.tvTitle.text =

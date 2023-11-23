@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_page"
+        android:icon="@drawable/sl_home"
+        android:title="@string/app_name" />
+    <item
+        android:id="@+id/favorites_page"
+        android:icon="@drawable/sl_favorite"
+        android:title="@string/favorites" />
+    <item
+        android:id="@+id/add_new_page"
+        android:icon="@drawable/sl_add_new"
+        android:title="@string/add_new" />
+    <item
+        android:id="@+id/messages_page"
+        android:icon="@drawable/sl_message"
+        android:title="@string/messages" />
+    <item
+        android:id="@+id/menu_page"
+        android:icon="@drawable/sl_menu"
+        android:title="@string/menu" />
+</menu>

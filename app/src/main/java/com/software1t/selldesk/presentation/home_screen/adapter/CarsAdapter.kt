@@ -15,9 +15,7 @@ class CarsAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val binding = ItemCarBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+            LayoutInflater.from(parent.context), parent, false
         )
         return CarViewHolder(binding = binding, click = clickFunc)
     }
@@ -42,9 +40,10 @@ class CarsAdapter (
                     tvCarName.text = it.name
                     tvPrice.text = it.price
                     ivCarImage.setImageResource(it.image)
+                    cbFavorite.isChecked = it.isLiked
                     tvCarDescription.text = it.description
                     tvCarCity.text = it.city
-                    ivLikesIcon.setImageResource(if (it.isLiked) R.drawable.ic_heart_filled else R.drawable.ic_heart_outlined)
+                    ivLikesIcon.setImageResource(R.drawable.ic_favorite_thin)
                     tvPostedAt.text = it.postDate.toString()
                     tvViewsCount.text = it.postViewedCount.toString()
                     tvLikesCount.text = it.postLikedCount.toString()
