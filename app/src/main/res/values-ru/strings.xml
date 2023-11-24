@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="title_home">Домой</string>
+    <string name="title_dashboard">Панель</string>
+    <string name="title_notifications">Уведомления</string>
+    <string name="category_sample">Это Категория</string>
+    <string name="key_city">Город</string>
+    <string name="value_city">Алматы</string>
+    <string name="key_generation">Поколение</string>
+    <string name="value_generation">2017 - 2021 XV70</string>
+    <string name="key_mileage">Пробег</string>
+    <string name="value_mileage">83 000 км</string>
+    <string name="key_transmission">Коробка передач</string>
+    <string name="value_transmission">автомат</string>
+    <string name="key_drive">Привод</string>
+    <string name="value_drive">Передний привод</string>
+    <string name="favorites">Избранное</string>
+    <string name="add_new">Подать</string>
+    <string name="messages">Сообщения</string>
+    <string name="menu">Меню</string>
+    <string name="favorite">Избранное</string>
+    <string name="share">Поделиться</string>
+    <string name="more">Еще</string>
+
+</resources>

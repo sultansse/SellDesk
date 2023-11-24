@@ -37,8 +37,15 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         initObservers()
 
         with(binding) {
+            toolbar.likeClick = {
+                Toast.makeText(requireContext(), "like", Toast.LENGTH_SHORT).show()
+            }
+            toolbar.shareClick = {
+                Toast.makeText(requireContext(), "share", Toast.LENGTH_SHORT).show()
+            }
             rvComposite.adapter = compositeAdapter
         }
+
         with(viewModel) {
             adapterItems.observe(viewLifecycleOwner) {
                 compositeAdapter.submitList(it)

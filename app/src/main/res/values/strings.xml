@@ -1,24 +1,23 @@
 <resources>
-    <string name="app_name">Sell Desk</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- English strings -->
+    <string name="app_name" translatable="false">Sell Desk</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="category_sample">This is Category</string>
-    <string name="key_city">Город</string>
-    <string name="value_city">Алматы</string>
-    <string name="key_generation">Поколение</string>
+    <string name="key_city">City</string>
+    <string name="value_city">Almaty</string>
+    <string name="key_generation">Generation</string>
     <string name="value_generation">2017 - 2021 XV70</string>
-    <string name="key_mileage">Пробег</string>
-    <string name="value_mileage">83 000 км</string>
-    <string name="key_transmission">Коробка передач</string>
-    <string name="value_transmission">автомат</string>
-    <string name="key_drive">Привод</string>
-    <string name="value_drive">Передний привод</string>
+    <string name="key_mileage">Mileage</string>
+    <string name="value_mileage">83,000 km</string>
+    <string name="key_transmission">Transmission</string>
+    <string name="value_transmission">Automatic</string>
+    <string name="key_drive">Drive</string>
+    <string name="value_drive">Front-wheel drive</string>
     <string name="favorites">Favorites</string>
-    <string name="add_new">Create new</string>
+    <string name="add_new">Submit</string>
     <string name="messages">Messages</string>
     <string name="menu">Menu</string>
     <string name="favorite">Favorite</string>

@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="ToolbarView">
         <attr name="toolbar_title" format="string" />
+        <attr name="toolbar_elevation" format="dimension" />
         <attr name="toolbar_back_btn_visibility" format="boolean" />
         <attr name="toolbar_like_btn_visibility" format="boolean" />
         <attr name="toolbar_share_btn_visibility" format="boolean" />

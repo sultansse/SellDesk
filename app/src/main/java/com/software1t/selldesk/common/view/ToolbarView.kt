@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import com.software1t.selldesk.R
@@ -18,50 +17,33 @@ class ToolbarView @JvmOverloads constructor(
     private val binding: ViewToolbarBinding =
         ViewToolbarBinding.inflate(LayoutInflater.from(context), this)
 
+    var likeClick: (() -> Unit)? = null
+    var shareClick: (() -> Unit)? = null
+
     init {
         setAttrs(attrs, R.styleable.ToolbarView) {
-            with(binding.topAppBar) {
+
+            with(binding) {
+                title.text = it.getString(R.styleable.ToolbarView_toolbar_title)
+                backBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_back_btn_visibility, false)
+                likeBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_like_btn_visibility, false)
+                shareBtn.isVisible =
+                    it.getBoolean(R.styleable.ToolbarView_toolbar_share_btn_visibility, false)
 
 
-                navigationIcon.apply {
-                    isVisible =
-                        it.getBoolean(R.styleable.ToolbarView_toolbar_back_btn_visibility, false)
+                shareBtn.setOnClickListener {
+                    shareClick?.invoke()
                 }
-
-                title = it.getString(R.styleable.ToolbarView_toolbar_title)
-
-                setNavigationOnClickListener {
+                likeBtn.setOnClickListener {
+                    likeClick?.invoke()
+                }
+                backBtn.setOnClickListener {
                     findNavController().popBackStack()
                 }
-
-                setOnMenuItemClickListener { menuItem ->
-                    when (menuItem.itemId) {
-                        R.id.share -> {
-                            // Handle edit text press
-                            Toast.makeText(context, "share", Toast.LENGTH_SHORT).show()
-                            true
-                        }
-
-                        R.id.favorite -> {
-                            // Handle favorite icon press
-                            Toast.makeText(context, "favorite", Toast.LENGTH_SHORT).show()
-                            true
-                        }
-
-                        R.id.more -> {
-                            // Handle more item (inside overflow menu) press
-                            Toast.makeText(context, "more", Toast.LENGTH_SHORT).show()
-                            true
-                        }
-
-                        else -> {
-                            Toast.makeText(context, "else", Toast.LENGTH_SHORT).show()
-                            false
-                        }
-                    }
-                }
-
             }
+
         }
     }
 }
