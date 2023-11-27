@@ -22,5 +22,7 @@
     <string name="favorite">Избранное</string>
     <string name="share">Поделиться</string>
     <string name="more">Еще</string>
+    <string name="messages_not_found_title">Упс, сообщении пока не наблюдается :)</string>
+
 
 </resources>

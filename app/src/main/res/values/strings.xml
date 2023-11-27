@@ -23,5 +23,6 @@
     <string name="favorite">Favorite</string>
     <string name="share">Share</string>
     <string name="more">More</string>
+    <string name="messages_not_found_title">Oops, no messages yet</string>
 
 </resources>

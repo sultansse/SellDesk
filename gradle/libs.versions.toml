@@ -55,6 +55,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 
 #other
 storyly = { group = "com.appsamurai.storyly", name = "storyly", version.ref = "storyly" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 
 #// Retrofit
 #implementation("com.squareup.retrofit2:retrofit:2.9.0")
