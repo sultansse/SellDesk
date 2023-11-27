@@ -31,40 +31,6 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/gl_categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:elevation="8dp"
-            app:columnCount="3"
-            app:rowCount="2">
-
-            <include
-                android:id="@+id/button1"
-                layout="@layout/view_square_linear_layout" />
-
-            <include
-                android:id="@+id/button2"
-                layout="@layout/view_square_linear_layout" />
-
-            <include
-                android:id="@+id/button3"
-                layout="@layout/view_square_linear_layout" />
-
-            <include
-                android:id="@+id/button4"
-                layout="@layout/view_square_linear_layout" />
-
-            <include
-                android:id="@+id/button5"
-                layout="@layout/view_square_linear_layout" />
-
-            <include
-                android:id="@+id/button6"
-                layout="@layout/view_square_linear_layout" />
-        </androidx.gridlayout.widget.GridLayout>
-
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/loading_pb"
             android:layout_width="match_parent"
@@ -77,8 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="5"
             tools:listitem="@layout/item_car" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

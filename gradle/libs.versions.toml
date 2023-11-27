@@ -13,10 +13,11 @@ koin_version = "3.5.0"
 lifecycle = "2.6.2"
 activityKtx = "1.8.1"
 library = "8.0.2"
-storyly = "1.32.5"
+storyly = "2.4.0"
 gridlayout = "1.0.0"
 room = "2.6.0"
 coordinatorlayout = "1.2.0"
+lottie = "6.2.0"
 
 [libraries]
 # core

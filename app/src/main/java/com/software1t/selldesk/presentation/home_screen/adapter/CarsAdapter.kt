@@ -3,13 +3,12 @@ package com.software1t.selldesk.presentation.home_screen.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.software1t.selldesk.R
 import com.software1t.selldesk.base.BaseRecyclerAdapter
 import com.software1t.selldesk.base.BaseViewHolder
 import com.software1t.selldesk.databinding.ItemCarBinding
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 
-class CarsAdapter (
+class CarsAdapter(
     private val clickFunc: ((Int) -> Unit)? = null
 ) : BaseRecyclerAdapter<CarUiModel, ItemCarBinding, CarsAdapter.CarViewHolder>(CarItemDiffUtil()) {
 
@@ -20,8 +19,8 @@ class CarsAdapter (
         return CarViewHolder(binding = binding, click = clickFunc)
     }
 
-    class CarViewHolder (
-        private val binding : ItemCarBinding,
+    class CarViewHolder(
+        private val binding: ItemCarBinding,
         private val click: ((Int) -> Unit)? = null
     ) : BaseViewHolder<CarUiModel, ItemCarBinding>(binding) {
 
@@ -41,12 +40,6 @@ class CarsAdapter (
                     tvPrice.text = it.price
                     ivCarImage.setImageResource(it.image)
                     cbFavorite.isChecked = it.isLiked
-                    tvCarDescription.text = it.description
-                    tvCarCity.text = it.city
-                    ivLikesIcon.setImageResource(R.drawable.ic_favorite_thin)
-                    tvPostedAt.text = it.postDate.toString()
-                    tvViewsCount.text = it.postViewedCount.toString()
-                    tvLikesCount.text = it.postLikedCount.toString()
                 }
             }
         }

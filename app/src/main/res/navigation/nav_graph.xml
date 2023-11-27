@@ -14,6 +14,26 @@
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.software1t.selldesk.presentation.favorites_screen.FavoritesFragment"
+        android:label="favoritesFragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.software1t.selldesk.presentation.messages_screen.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.software1t.selldesk.presentation.profile_screen.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.software1t.selldesk.presentation.new_post_screen.NewPostFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post" />
 
     <fragment
         android:id="@+id/detailsFragment"

@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:elevation="4dp"
     app:cardCornerRadius="8dp">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="4dp"
-        android:elevation="4dp">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_car_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Car Name"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/cb_favorite"
-            app:layout_constraintEnd_toStartOf="@+id/cb_favorite"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/cb_favorite"
@@ -34,105 +18,53 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:button="@drawable/sl_favorite"
+            android:elevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_car_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_launcher_app"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_car_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Car Name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_car_image" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_car_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="2017"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_car_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_car_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_car_name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="Price"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_car_name" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_car_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_launcher_app"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_price" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_car_description"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Car Description"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_car_city"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_car_image"
-            app:layout_constraintTop_toTopOf="@id/iv_car_image"
-            tools:text="lorem ipsum lorem ipsum lorem ipsum lorem dipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum " />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_car_city"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="City"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_car_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_car_image" />
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/item_bottom_bar"
-            app:layout_constraintTop_toBottomOf="@+id/iv_car_image" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/item_bottom_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_posted_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="18 November" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_watched_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_views" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_views_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1200" />
-
-            <!--            make group of above 2 -->
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_likes_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_favorite_thin" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_likes_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="16" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

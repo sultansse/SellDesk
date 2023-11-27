@@ -71,7 +71,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
 
-
 //    other
     implementation(libs.storyly)
 }
