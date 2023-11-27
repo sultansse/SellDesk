@@ -19,27 +19,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun prepareView(savedInstanceState: Bundle?) {
         setupBottomNavigationView()
+        setupBottomNavViewVisibility()
+        setupBottomNavViewClicks()
     }
 
-    private fun setupBottomNavigationView() {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-
-        navController = navHostFragment.navController
-        binding.bottomNavigationView.setupWithNavController(navController)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.homeFragment, R.id.favoritesFragment, R.id.newPostFragment, R.id.messagesFragment, R.id.profileFragment -> {
-                    binding.bottomNavigationView.isVisible = true
-                }
-
-                else -> {
-                    binding.bottomNavigationView.isVisible = false
-                }
-            }
-        }
-
+    private fun setupBottomNavViewClicks() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home_screen -> {
@@ -59,21 +43,39 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
                 R.id.messages_screen -> {
                     navController.navigate(R.id.messagesFragment)
-                    // Respond to navigation item 2 click
                     true
                 }
 
                 R.id.profile_screen -> {
                     navController.navigate(R.id.profileFragment)
-                    // Respond to navigation item 2 click
                     true
                 }
 
                 else -> false
             }
-
         }
+    }
 
+    private fun setupBottomNavViewVisibility() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment, R.id.favoritesFragment, R.id.newPostFragment, R.id.messagesFragment, R.id.profileFragment -> {
+                    binding.bottomNavigationView.isVisible = true
+                }
+
+                else -> {
+                    binding.bottomNavigationView.isVisible = false
+                }
+            }
+        }
+    }
+
+    private fun setupBottomNavigationView() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
+        navController = navHostFragment.navController
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
