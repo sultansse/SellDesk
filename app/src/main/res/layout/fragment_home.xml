@@ -36,15 +36,84 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
+            <GridLayout
+                android:id="@+id/gl_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="4"
+                android:elevation="8dp"
+                android:rowCount="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/storyly_view_holder">
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button1"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button2"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button3"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button4"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button5"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button6"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button7"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+
+                <com.software1t.selldesk.common.view.SquareLinearLayoutView
+                    android:id="@+id/button8"
+                    android:layout_columnWeight="1"
+                    app:src_icon="@drawable/ic_favorite"
+                    app:category_title="@string/app_name"
+                    android:layout_gravity="fill_horizontal" />
+            </GridLayout>
+
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:visibility="gone"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/anim_not_found" />
