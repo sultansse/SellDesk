@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -35,6 +36,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         with(binding) {
             storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+            swipeRefreshLayout.setOnRefreshListener {
+                viewModel.setEvent(HomeContract.Event.OnFetchCars)
+                swipeRefreshLayout.isRefreshing = false
+            }
             rvCars.adapter = carsAdapter
             rvVeil.setAdapter(carsAdapter)
             rvVeil.setLayoutManager(GridLayoutManager(requireContext(), 2))
@@ -53,17 +58,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
+                            binding.rvCars.isVisible =
+                                false // remove if want to update without animation
                             binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Loading -> {
+                            binding.rvCars.isVisible =
+                                false // remove if want to update without animation
                             binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Success -> {
-                            binding.rvVeil.unVeil()
                             val data = state.cars
-                            carsAdapter.submitList(data)
+                            if (data.isNotEmpty()) {
+                                binding.rvCars.isVisible = true
+                                binding.rvVeil.unVeil()
+                                carsAdapter.submitList(data)
+                            }
                         }
                     }
 
