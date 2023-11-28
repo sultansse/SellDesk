@@ -8,7 +8,7 @@ import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val getMyData: GetCarsUseCase,
+    private val getCars: GetCarsUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 
     override fun createInitialState(): HomeContract.State {
@@ -33,7 +33,7 @@ class HomeViewModel(
 
     private fun fetchCars() {
         viewModelScope.launch {
-            getMyData.execute().collect() {
+            getCars.execute().collect() {
                 when (it) {
                     is Resource.Loading -> {
                         setState { copy(carsState = HomeContract.CarsState.Loading) }

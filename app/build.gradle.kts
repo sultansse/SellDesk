@@ -74,4 +74,5 @@ dependencies {
 //    other
     implementation(libs.storyly)
     implementation(libs.lottie)
+    implementation(libs.veil)
 }

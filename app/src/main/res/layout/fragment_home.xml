@@ -31,13 +31,6 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/loading_pb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:padding="8dp" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cars"
             android:layout_width="match_parent"
@@ -47,5 +40,18 @@
             app:spanCount="2"
             tools:itemCount="5"
             tools:listitem="@layout/item_car" />
+
+        <com.skydoves.androidveil.VeilRecyclerFrameView
+            android:id="@+id/rv_veil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:veilFrame_baseAlpha="0.6"
+            app:veilFrame_baseColor="@color/colorGray80"
+            app:veilFrame_highlightAlpha="1.0"
+            app:veilFrame_highlightColor="@color/colorGray30"
+            app:veilFrame_layout="@layout/item_car"
+            app:veilFrame_radius="8dp"
+            app:veilFrame_shimmerEnable="true"
+            app:veilFrame_veiled="true" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

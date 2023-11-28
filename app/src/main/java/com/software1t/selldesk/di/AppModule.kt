@@ -58,7 +58,7 @@ val otherClassesModule = module {
 val viewModelModule = module {
     viewModel {
         HomeViewModel(
-            getMyData = get(),
+            getCars = get(),
         )
     }
     viewModel {

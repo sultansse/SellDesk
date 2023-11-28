@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import com.appsamurai.storyly.StorylyInit
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.common.constants.Constants.Companion.STORYLY_INSTANCE_TOKEN
@@ -36,6 +36,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         with(binding) {
             storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
             rvCars.adapter = carsAdapter
+            rvVeil.setAdapter(carsAdapter)
+            rvVeil.setLayoutManager(GridLayoutManager(requireContext(), 2))
+            rvVeil.addVeiledItems(12)
         }
 
         with(viewModel) {
@@ -50,17 +53,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
-                            binding.loadingPb.isVisible = false
+                            binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Loading -> {
-                            binding.loadingPb.isVisible = true
+                            binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Success -> {
+                            binding.rvVeil.unVeil()
                             val data = state.cars
                             carsAdapter.submitList(data)
-                            binding.loadingPb.isVisible = false
                         }
                     }
 
