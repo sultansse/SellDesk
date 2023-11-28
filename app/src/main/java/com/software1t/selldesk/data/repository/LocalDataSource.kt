@@ -12,6 +12,8 @@ interface LocalDataSource {
 
     suspend fun getCarItems(): List<CarDataModel>
 
+    suspend fun getFavoriteCarItems(): List<CarDataModel>
+
     suspend fun addCarItem(car: CarLocalModel)
 
     suspend fun addCarItems(cars: List<CarLocalModel>)

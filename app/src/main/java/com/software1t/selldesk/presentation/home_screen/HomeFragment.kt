@@ -40,10 +40,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 viewModel.setEvent(HomeContract.Event.OnFetchCars)
                 swipeRefreshLayout.isRefreshing = false
             }
-            rvCars.adapter = carsAdapter
-            rvVeil.setAdapter(carsAdapter)
-            rvVeil.setLayoutManager(GridLayoutManager(requireContext(), 2))
-            rvVeil.addVeiledItems(12)
+            setupAdapter()
         }
 
         with(viewModel) {
@@ -58,14 +55,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
-                            binding.rvCars.isVisible =
-                                false // remove if want to update without animation
+                            // remove if want to update without animation
+                            binding.rvCars.isVisible = false
                             binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Loading -> {
-                            binding.rvCars.isVisible =
-                                false // remove if want to update without animation
+                            // remove if want to update without animation
+                            binding.rvCars.isVisible = false
                             binding.rvVeil.veil()
                         }
 
@@ -99,5 +96,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun goToDetails(carId: Int) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(carId)
         navigate(action)
+    }
+
+    private fun setupAdapter() {
+        with(binding) {
+            rvCars.adapter = carsAdapter
+            rvVeil.setAdapter(carsAdapter)
+            rvVeil.setLayoutManager(GridLayoutManager(requireContext(), 2))
+            rvVeil.addVeiledItems(12)
+        }
     }
 }

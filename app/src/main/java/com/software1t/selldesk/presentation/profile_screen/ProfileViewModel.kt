@@ -9,31 +9,23 @@ import com.software1t.selldesk.common.model.ButtonAdapterModel
 import com.software1t.selldesk.common.model.DividerAdapterModel
 import com.software1t.selldesk.domain.ClearDatabaseUseCase
 import com.software1t.selldesk.domain.PopulateDbUseCase
-import com.software1t.selldesk.presentation.details_screen.DetailsComposer
-import com.software1t.selldesk.presentation.details_screen.DetailsContract
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    private val itemComposer: DetailsComposer,
     private val populateDatabase: PopulateDbUseCase,
     private val clearDatabase: ClearDatabaseUseCase,
-) : BaseViewModel<DetailsContract.Event, DetailsContract.State, DetailsContract.Effect>() {
+) : BaseViewModel<ProfileContract.Event, ProfileContract.State, ProfileContract.Effect>() {
 
     private val _adapterItems = MutableLiveData<List<DelegateAdapterModel>>()
     val adapterItems: LiveData<List<DelegateAdapterModel>> get() = _adapterItems
 
-    private fun updateAdapters(model: DelegateAdapterModel) {
-        val items = itemComposer.compose(model)
-        _adapterItems.value = items
-    }
-
-    override fun createInitialState(): DetailsContract.State {
-        return DetailsContract.State(
-            carsState = DetailsContract.CarsState.Idle,
+    override fun createInitialState(): ProfileContract.State {
+        return ProfileContract.State(
+            carsState = ProfileContract.CarsState.Idle,
         )
     }
 
-    override fun handleEvent(event: DetailsContract.Event) {
+    override fun handleEvent(event: ProfileContract.Event) {
         TODO("Not yet implemented")
     }
 

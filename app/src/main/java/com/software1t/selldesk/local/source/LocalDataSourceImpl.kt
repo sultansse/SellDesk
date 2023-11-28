@@ -28,6 +28,12 @@ class LocalDataSourceImpl(
         return carDataList
     }
 
+    override suspend fun getFavoriteCarItems(): List<CarDataModel> {
+        val carLocalList = carDao.getFavoriteCarItems()
+        val carDataList = carMapper.fromList(carLocalList)
+        return carDataList
+    }
+
     override suspend fun addCarItem(car: CarLocalModel) {
         TODO("Not yet implemented")
     }

@@ -27,6 +27,12 @@ class MyRepositoryImpl(
         return carDomainList
     }
 
+    override suspend fun getFavoriteCarItems(): List<CarDomainModel> {
+        val carDataList = localDataSource.getFavoriteCarItems()
+        val carDomainList = carMapper.fromList(carDataList)
+        return carDomainList
+    }
+
     override suspend fun addCarItem(car: CarLocalModel) {
         TODO("Not yet implemented")
     }

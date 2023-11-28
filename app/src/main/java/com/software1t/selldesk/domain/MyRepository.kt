@@ -12,6 +12,8 @@ interface MyRepository {
 
     suspend fun getCarItems(): List<CarDomainModel>
 
+    suspend fun getFavoriteCarItems(): List<CarDomainModel>
+
     suspend fun addCarItem(car: CarLocalModel)
 
     suspend fun addCarItems(cars: List<CarLocalModel>)

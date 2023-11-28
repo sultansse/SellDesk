@@ -13,6 +13,9 @@ interface CarDao {
     @Query("SELECT * FROM CARS_TABLE")
     suspend fun getCarItems(): List<CarLocalModel>
 
+    @Query("SELECT * FROM CARS_TABLE WHERE isLiked = 1")
+    suspend fun getFavoriteCarItems(): List<CarLocalModel>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCarItem(car: CarLocalModel)
 

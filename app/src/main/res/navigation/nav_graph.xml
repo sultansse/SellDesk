@@ -18,7 +18,11 @@
         android:id="@+id/favoritesFragment"
         android:name="com.software1t.selldesk.presentation.favorites_screen.FavoritesFragment"
         android:label="favoritesFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_favoritesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.software1t.selldesk.presentation.messages_screen.MessagesFragment"

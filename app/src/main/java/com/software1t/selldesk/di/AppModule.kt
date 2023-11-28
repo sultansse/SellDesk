@@ -4,12 +4,14 @@ import com.software1t.selldesk.data.mapper.CarDataDomainMapper
 import com.software1t.selldesk.data.repository.LocalDataSource
 import com.software1t.selldesk.domain.ClearDatabaseUseCase
 import com.software1t.selldesk.domain.GetCarsUseCase
+import com.software1t.selldesk.domain.GetFavoriteCarsUseCase
 import com.software1t.selldesk.domain.MyRepository
 import com.software1t.selldesk.domain.PopulateDbUseCase
 import com.software1t.selldesk.domain.mapper.CarDomainUiMapper
 import com.software1t.selldesk.local.mapper.CarLocalDataMapper
 import com.software1t.selldesk.presentation.details_screen.DetailsComposer
 import com.software1t.selldesk.presentation.details_screen.DetailsViewModel
+import com.software1t.selldesk.presentation.favorites_screen.FavoritesViewModel
 import com.software1t.selldesk.presentation.home_screen.HomeViewModel
 import com.software1t.selldesk.presentation.profile_screen.ProfileViewModel
 import org.koin.android.ext.koin.androidContext
@@ -48,6 +50,7 @@ val useCaseModule = module {
     factory<PopulateDbUseCase> { providePopulateDbUseCase(repo = get()) }
     factory<GetCarsUseCase> { provideGetCarsUseCase(repo = get(), mapper = get()) }
     factory<ClearDatabaseUseCase> { provideClearDatabaseUseCase(repo = get()) }
+    factory<GetFavoriteCarsUseCase> { provideGetFavoriteCarsUseCase(repo = get(), mapper = get()) }
 }
 
 
@@ -68,9 +71,13 @@ val viewModelModule = module {
     }
     viewModel {
         ProfileViewModel(
-            itemComposer = get(),
             populateDatabase = get(),
             clearDatabase = get(),
+        )
+    }
+    viewModel {
+        FavoritesViewModel(
+            getFavoriteCars = get(),
         )
     }
 }

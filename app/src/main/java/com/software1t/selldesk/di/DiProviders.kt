@@ -10,6 +10,8 @@ import com.software1t.selldesk.domain.ClearDatabaseUseCase
 import com.software1t.selldesk.domain.ClearDatabaseUseCaseImpl
 import com.software1t.selldesk.domain.GetCarsUseCase
 import com.software1t.selldesk.domain.GetCarsUseCaseImpl
+import com.software1t.selldesk.domain.GetFavoriteCarsUseCase
+import com.software1t.selldesk.domain.GetFavoriteCarsUseCaseImpl
 import com.software1t.selldesk.domain.MyRepository
 import com.software1t.selldesk.domain.PopulateDbUseCase
 import com.software1t.selldesk.domain.PopulateDbUseCaseImpl
@@ -38,6 +40,12 @@ fun provideGetCarsUseCase(repo: MyRepository, mapper: CarDomainUiMapper): GetCar
 
 fun provideClearDatabaseUseCase(repo: MyRepository): ClearDatabaseUseCase =
     ClearDatabaseUseCaseImpl(repo)
+
+fun provideGetFavoriteCarsUseCase(
+    repo: MyRepository,
+    mapper: CarDomainUiMapper
+): GetFavoriteCarsUseCase =
+    GetFavoriteCarsUseCaseImpl(repo, mapper)
 
 //db
 fun provideCarDAO(appDatabase: AppDatabase) = appDatabase.carDao()
