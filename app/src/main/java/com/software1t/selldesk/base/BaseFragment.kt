@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionInflater
 import androidx.viewbinding.ViewBinding
 
 /**
@@ -15,8 +16,16 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     private var _binding: VB? = null
     abstract val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> VB
 
-    protected val binding : VB
+    protected val binding: VB
         get() = requireNotNull(_binding)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val transition = TransitionInflater.from(requireContext())
+            .inflateTransition(android.R.transition.move)
+        sharedElementEnterTransition = transition
+        sharedElementReturnTransition = transition
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

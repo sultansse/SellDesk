@@ -29,7 +29,9 @@ class CarsAdapter(
         init {
             binding.root.setOnClickListener {
                 getRowItem()?.let {
-                    val extras = FragmentNavigatorExtras(binding.ivCarImage to "image_transition")
+                    val extras = FragmentNavigatorExtras(
+                        binding.ivCarImage to it.id.toString(),
+                    )
                     click?.invoke(it.id, extras)
                 }
 
@@ -42,6 +44,7 @@ class CarsAdapter(
                     tvCarName.text = it.name
                     tvPrice.text = it.price
                     ivCarImage.setImageResource(it.image)
+                    ivCarImage.transitionName = it.id.toString()
                     cbFavorite.isChecked = it.isLiked
                 }
             }

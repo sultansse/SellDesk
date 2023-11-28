@@ -29,29 +29,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModel()
 
     private val carsAdapter: CarsAdapter by lazy {
-        CarsAdapter { it, extras ->
-            goToDetails(it, extras)
-        }
+        CarsAdapter { carId, extras -> goToDetails(carId, extras) }
     }
 
     override fun prepareView(savedInstanceState: Bundle?) {
         initObservers()
-
         with(binding) {
-            storylyView.storylyInit = StorylyInit(
-                storylyId = STORYLY_INSTANCE_TOKEN,
-                config = StorylyConfig.Builder()
-                    .setStoryGroupStyling(
-                        styling = StorylyStoryGroupStyling.Builder()
-                            .setTitleVisibility(isVisible = false)
-                            .build()
-                    ).build()
-            )
-
             swipeRefreshLayout.setOnRefreshListener {
                 viewModel.setEvent(HomeContract.Event.OnFetchCars)
                 swipeRefreshLayout.isRefreshing = false
             }
+            setupStories()
             setupAdapter()
         }
 
@@ -114,5 +102,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             rvVeil.setLayoutManager(GridLayoutManager(requireContext(), 2))
             rvVeil.addVeiledItems(12)
         }
+    }
+
+    private fun setupStories() {
+        binding.storylyView.storylyInit = StorylyInit(
+            storylyId = STORYLY_INSTANCE_TOKEN,
+            config = StorylyConfig.Builder()
+                .setStoryGroupStyling(
+                    styling = StorylyStoryGroupStyling.Builder()
+                        .setTitleVisibility(isVisible = false)
+                        .build()
+                ).build()
+        )
     }
 }

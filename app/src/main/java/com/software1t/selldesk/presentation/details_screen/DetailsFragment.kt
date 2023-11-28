@@ -8,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
-import androidx.transition.TransitionInflater
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.base.adapter.CompositeAdapter
 import com.software1t.selldesk.common.delegates.DividerItemAdapter
@@ -35,16 +34,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             .build()
     }
 
+
     override fun prepareView(savedInstanceState: Bundle?) {
-
-        val transition = TransitionInflater.from(requireContext())
-            .inflateTransition(android.R.transition.move)
-        sharedElementEnterTransition = transition
-        sharedElementReturnTransition = transition
-
-        initObservers()
-
         with(binding) {
+            ivCarImage.transitionName = args.carId.toString()
             toolbar.likeClick = {
                 Toast.makeText(requireContext(), "like", Toast.LENGTH_SHORT).show()
             }
@@ -58,9 +51,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             adapterItems.observe(viewLifecycleOwner) {
                 compositeAdapter.submitList(it)
             }
-
-//            setEvent(DetailsContract.Event.OnFetchCars)
         }
+        initObservers()
     }
 
 

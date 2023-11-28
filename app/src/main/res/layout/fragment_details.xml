@@ -20,9 +20,8 @@
             app:toolbar_title="@string/app_name" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_car"
+            android:id="@+id/iv_car_image"
             android:layout_width="match_parent"
-            android:transitionName="image_transition"
             android:layout_height="200dp"
             android:src="@drawable/toyota2" />
 
