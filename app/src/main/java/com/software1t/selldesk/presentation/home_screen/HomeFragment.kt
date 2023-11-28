@@ -55,24 +55,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                     when (val state = it.carsState) {
                         is HomeContract.CarsState.Idle -> {
-                            // remove if want to update without animation
-                            binding.rvCars.isVisible = false
                             binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Loading -> {
-                            // remove if want to update without animation
-                            binding.rvCars.isVisible = false
                             binding.rvVeil.veil()
                         }
 
                         is HomeContract.CarsState.Success -> {
                             val data = state.cars
-                            if (data.isNotEmpty()) {
-                                binding.rvCars.isVisible = true
-                                binding.rvVeil.unVeil()
-                                carsAdapter.submitList(data)
+                            if (data.isEmpty()) {
+                                binding.animationView.isVisible = true
                             }
+                            binding.rvCars.isVisible = true
+                            binding.rvVeil.unVeil()
+                            carsAdapter.submitList(data)
                         }
                     }
 

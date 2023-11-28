@@ -51,14 +51,10 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
 
                     when (val state = it.carsState) {
                         is FavoritesContract.CarsState.Idle -> {
-                            // remove if want to update without animation
-                            binding.rvCars.isVisible = false
                             binding.rvVeil.veil()
                         }
 
                         is FavoritesContract.CarsState.Loading -> {
-                            // remove if want to update without animation
-                            binding.rvCars.isVisible = false
                             binding.rvVeil.veil()
                         }
 
