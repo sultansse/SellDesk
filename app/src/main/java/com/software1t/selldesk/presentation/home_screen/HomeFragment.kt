@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.appsamurai.storyly.StorylyInit
+import com.appsamurai.storyly.config.StorylyConfig
+import com.appsamurai.storyly.config.styling.group.StorylyStoryGroupStyling
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.common.constants.Constants.Companion.STORYLY_INSTANCE_TOKEN
 import com.software1t.selldesk.common.extenshions.navigate
@@ -35,7 +37,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         initObservers()
 
         with(binding) {
-            storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+            storylyView.storylyInit = StorylyInit(
+                storylyId = STORYLY_INSTANCE_TOKEN,
+                config = StorylyConfig.Builder()
+                    .setStoryGroupStyling(
+                        styling = StorylyStoryGroupStyling.Builder()
+                            .setTitleVisibility(isVisible = false)
+                            .build()
+                    ).build()
+            )
+
+
             swipeRefreshLayout.setOnRefreshListener {
                 viewModel.setEvent(HomeContract.Event.OnFetchCars)
                 swipeRefreshLayout.isRefreshing = false
