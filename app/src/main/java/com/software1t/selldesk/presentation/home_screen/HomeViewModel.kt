@@ -3,12 +3,12 @@ package com.software1t.selldesk.presentation.home_screen
 import androidx.lifecycle.viewModelScope
 import com.software1t.selldesk.base.BaseViewModel
 import com.software1t.selldesk.common.Resource
-import com.software1t.selldesk.domain.GetMyDataUseCase
+import com.software1t.selldesk.domain.GetCarsUseCase
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val getMyData: GetMyDataUseCase,
+    private val getMyData: GetCarsUseCase,
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 
     override fun createInitialState(): HomeContract.State {

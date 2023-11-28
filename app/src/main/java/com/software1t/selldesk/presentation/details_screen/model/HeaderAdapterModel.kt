@@ -1,6 +1,7 @@
 package com.software1t.selldesk.presentation.details_screen.model
 
 import com.software1t.selldesk.base.adapter.DelegateAdapterModel
+import com.software1t.selldesk.common.model.DividerAdapterModel
 
 class HeaderAdapterModel(
     val carName: String,

@@ -10,10 +10,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.base.adapter.CompositeAdapter
+import com.software1t.selldesk.common.delegates.DividerItemAdapter
 import com.software1t.selldesk.databinding.FragmentDetailsBinding
 import com.software1t.selldesk.presentation.details_screen.adapter.DetailsDescriptionAdapter
 import com.software1t.selldesk.presentation.details_screen.adapter.DetailsHeaderAdapter
-import com.software1t.selldesk.presentation.details_screen.adapter.DividerItemAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

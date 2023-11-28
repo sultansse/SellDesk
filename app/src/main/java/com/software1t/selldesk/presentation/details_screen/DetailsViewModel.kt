@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.software1t.selldesk.base.BaseViewModel
 import com.software1t.selldesk.base.adapter.DelegateAdapterModel
 import com.software1t.selldesk.common.extenshions.tenge
+import com.software1t.selldesk.common.model.DividerAdapterModel
 import com.software1t.selldesk.presentation.details_screen.model.DescriptionAdapterModel
-import com.software1t.selldesk.presentation.details_screen.model.DividerAdapterModel
 import com.software1t.selldesk.presentation.details_screen.model.HeaderAdapterModel
 
 class DetailsViewModel(

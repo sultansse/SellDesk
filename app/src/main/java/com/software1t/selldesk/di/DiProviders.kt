@@ -6,21 +6,18 @@ import com.software1t.selldesk.common.constants.Constants.Companion.DATABASE_NAM
 import com.software1t.selldesk.data.mapper.CarDataDomainMapper
 import com.software1t.selldesk.data.repository.LocalDataSource
 import com.software1t.selldesk.data.repository.MyRepositoryImpl
-import com.software1t.selldesk.domain.GetMyDataUseCase
-import com.software1t.selldesk.domain.GetMyDataUseCaseImpl
+import com.software1t.selldesk.domain.ClearDatabaseUseCase
+import com.software1t.selldesk.domain.ClearDatabaseUseCaseImpl
+import com.software1t.selldesk.domain.GetCarsUseCase
+import com.software1t.selldesk.domain.GetCarsUseCaseImpl
 import com.software1t.selldesk.domain.MyRepository
+import com.software1t.selldesk.domain.PopulateDbUseCase
+import com.software1t.selldesk.domain.PopulateDbUseCaseImpl
 import com.software1t.selldesk.domain.mapper.CarDomainUiMapper
 import com.software1t.selldesk.local.database.AppDatabase
 import com.software1t.selldesk.local.database.CarDao
 import com.software1t.selldesk.local.mapper.CarLocalDataMapper
 import com.software1t.selldesk.local.source.LocalDataSourceImpl
-
-
-/*
-fun provideLocalDataSource(carDao: CarDao, mapper: Mapper<CarLocalModel, CarDataModel>): LocalDataSource = LocalDataSourceImpl(carDao, mapper)
-fun provideMyRepository(localDataSource: LocalDataSource, mapper: Mapper<CarDataModel, CarDomainModel>): MyRepository = MyRepositoryImpl(localDataSource, mapper)
-fun provideGetMyDataUseCase(repo: MyRepository, mapper: Mapper<CarDomainModel, CarUiModel>): GetMyDataUseCase = GetMyDataUseCaseImpl(repo, mapper)
-*/
 
 
 fun provideLocalDataSource(carDao: CarDao, mapper: CarLocalDataMapper): LocalDataSource =
@@ -32,8 +29,15 @@ fun provideMyRepository(
 ): MyRepository =
     MyRepositoryImpl(localDataSource, mapper)
 
-fun provideGetMyDataUseCase(repo: MyRepository, mapper: CarDomainUiMapper): GetMyDataUseCase =
-    GetMyDataUseCaseImpl(repo, mapper)
+//usecases
+fun providePopulateDbUseCase(repo: MyRepository): PopulateDbUseCase =
+    PopulateDbUseCaseImpl(repo)
+
+fun provideGetCarsUseCase(repo: MyRepository, mapper: CarDomainUiMapper): GetCarsUseCase =
+    GetCarsUseCaseImpl(repo, mapper)
+
+fun provideClearDatabaseUseCase(repo: MyRepository): ClearDatabaseUseCase =
+    ClearDatabaseUseCaseImpl(repo)
 
 //db
 fun provideCarDAO(appDatabase: AppDatabase) = appDatabase.carDao()
@@ -46,9 +50,16 @@ fun provideAppDatabase(context: Context): AppDatabase {
 }
 
 
+
 //mappers
 /*
 fun provideLocalDataMapper() : Mapper<CarLocalModel, CarDataModel> = CarLocalDataMapper()
 fun provideDataDomainMapper() : Mapper<CarDataModel, CarDomainModel> = CarDataDomainMapper()
 fun provideDomainUiMapper() : Mapper<CarDomainModel, CarUiModel> = CarDomainUiMapper()
+*/
+
+/*
+fun provideLocalDataSource(carDao: CarDao, mapper: Mapper<CarLocalModel, CarDataModel>): LocalDataSource = LocalDataSourceImpl(carDao, mapper)
+fun provideMyRepository(localDataSource: LocalDataSource, mapper: Mapper<CarDataModel, CarDomainModel>): MyRepository = MyRepositoryImpl(localDataSource, mapper)
+fun provideGetMyDataUseCase(repo: MyRepository, mapper: Mapper<CarDomainModel, CarUiModel>): GetMyDataUseCase = GetMyDataUseCaseImpl(repo, mapper)
 */

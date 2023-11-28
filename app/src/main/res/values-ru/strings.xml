@@ -2,8 +2,11 @@
 <resources>
     <string name="hello_blank_fragment">Привет пустой фрагмент</string>
     <string name="title_home">Домой</string>
-    <string name="title_dashboard">Панель</string>
-    <string name="title_notifications">Уведомления</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_favorites">Избранное</string>
+    <string name="title_new_post">Подать</string>
+    <string name="title_messages">Сообщения</string>
+
     <string name="category_sample">Это Категория</string>
     <string name="key_city">Город</string>
     <string name="value_city">Алматы</string>

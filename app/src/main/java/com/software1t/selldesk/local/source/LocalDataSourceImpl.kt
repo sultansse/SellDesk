@@ -1,6 +1,5 @@
 package com.software1t.selldesk.local.source
 
-import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.data.model.CarDataModel
 import com.software1t.selldesk.data.repository.LocalDataSource
 import com.software1t.selldesk.local.MyMockData
@@ -15,43 +14,41 @@ class LocalDataSourceImpl(
 //    private val carMapper: Mapper<CarLocalModel, CarDataModel>,
 ) : LocalDataSource {
 
-    override suspend fun getAllMyData(): List<CarDataModel> {
-//             val postLocalList = postDAO.getPostItems()
-//        return postMapper.fromList(postLocalList)
-        val carLocalList = MyMockData.myMockCars
+    override suspend fun populateWithMockData() {
+        carDao.addCarItems(MyMockData.myMockCars)
+    }
+
+    override suspend fun getCarItem(id: Int): CarDataModel {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getCarItems(): List<CarDataModel> {
+        val carLocalList = carDao.getCarItems()
         val carDataList = carMapper.fromList(carLocalList)
         return carDataList
     }
 
-    override suspend fun addCarItem(car: CarLocalModel): Resource<Long> {
+    override suspend fun addCarItem(car: CarLocalModel) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getCarItem(id: Int): Resource<CarLocalModel> {
+    override suspend fun addCarItems(cars: List<CarLocalModel>) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun addCarItems(cars: List<CarLocalModel>): Resource<List<Long>> {
+    override suspend fun updateCarItem(car: CarLocalModel) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getCarItems(): Resource<List<CarLocalModel>> {
+    override suspend fun deleteCarItemById(id: Int) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateCarItem(car: CarLocalModel): Resource<Int> {
+    override suspend fun deleteCarItem(car: CarLocalModel) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun deleteCarItemById(id: Int): Resource<Int> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun deleteCarItem(car: CarLocalModel): Resource<Int> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun clearCachedCarItems(): Resource<Int> {
-        TODO("Not yet implemented")
+    override suspend fun deleteCarItems() {
+        carDao.deleteCarItems()
     }
 }

@@ -1,12 +1,12 @@
-package com.software1t.selldesk.presentation.details_screen.adapter
+package com.software1t.selldesk.common.delegates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.software1t.selldesk.base.BaseViewHolder
 import com.software1t.selldesk.base.adapter.DelegateAdapter
+import com.software1t.selldesk.common.model.DividerAdapterModel
 import com.software1t.selldesk.databinding.DelegateDividerBinding
-import com.software1t.selldesk.presentation.details_screen.model.DividerAdapterModel
 
 class DividerItemAdapter :
     DelegateAdapter<DividerAdapterModel, DelegateDividerBinding, DividerItemAdapter.DividerItemViewHolder>(

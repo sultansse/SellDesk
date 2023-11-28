@@ -9,23 +9,23 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 
-interface GetMyDataUseCase {
+interface GetCarsUseCase {
     suspend fun execute(): Flow<Resource<List<CarUiModel>>>
 }
 
-class GetMyDataUseCaseImpl(
+class GetCarsUseCaseImpl(
     private val repository: MyRepository,
     private val carMapper: Mapper<CarDomainModel, CarUiModel>,
-) : GetMyDataUseCase {
+) : GetCarsUseCase {
 
-//    better to move logic of flow and safeApiCall to a repository
+    //    better to move logic of flow and safeApiCall to a repository
     override suspend fun execute(): Flow<Resource<List<CarUiModel>>> {
 
         return flow {
             emit(Resource.Loading)
 //            delay(3000)
             val response = safeApiCall {
-                val carDomainList = repository.getAllMyData()
+                val carDomainList = repository.getCarItems()
                 val carUiList = carMapper.fromList(carDomainList)
                 return@safeApiCall carUiList
             }
