@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 
 fun Any?.isNull() = this == null
@@ -37,6 +38,14 @@ inline fun View.setAttrs(
 fun Fragment.navigate(direction: NavDirections) {
     try {
         findNavController().navigate(direction)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
+fun Fragment.navigate(direction: NavDirections, extras: FragmentNavigator.Extras) {
+    try {
+        findNavController().navigate(direction, extras)
     } catch (e: Exception) {
         e.printStackTrace()
     }

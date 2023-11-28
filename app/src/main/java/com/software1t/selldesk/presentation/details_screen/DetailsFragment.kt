@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import com.software1t.selldesk.base.BaseFragment
 import com.software1t.selldesk.base.adapter.CompositeAdapter
 import com.software1t.selldesk.common.delegates.DividerItemAdapter
@@ -25,6 +26,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private val viewModel: DetailsViewModel by viewModel()
     private val args: DetailsFragmentArgs by navArgs()
 
+
     private val compositeAdapter by lazy {
         CompositeAdapter.Builder()
             .add(DetailsHeaderAdapter())
@@ -34,6 +36,12 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     override fun prepareView(savedInstanceState: Bundle?) {
+
+        val transition = TransitionInflater.from(requireContext())
+            .inflateTransition(android.R.transition.move)
+        sharedElementEnterTransition = transition
+        sharedElementReturnTransition = transition
+
         initObservers()
 
         with(binding) {

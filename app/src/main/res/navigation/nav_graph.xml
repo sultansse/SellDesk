@@ -13,6 +13,13 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+
+        <!--        app:enterAnim="@anim/h_fragment_enter"-->
+        <!--        app:exitAnim="@anim/h_fragment_exit"-->
+        <!--        app:popEnterAnim="@anim/h_fragment_pop_enter"-->
+        <!--        app:popExitAnim="@anim/h_fragment_pop_exit" />-->
+
+
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -22,6 +29,7 @@
         <action
             android:id="@+id/action_favoritesFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/messagesFragment"

@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.appsamurai.storyly.StorylyInit
 import com.appsamurai.storyly.config.StorylyConfig
@@ -28,8 +29,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModel()
 
     private val carsAdapter: CarsAdapter by lazy {
-        CarsAdapter {
-            goToDetails(it)
+        CarsAdapter { it, extras ->
+            goToDetails(it, extras)
         }
     }
 
@@ -46,7 +47,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             .build()
                     ).build()
             )
-
 
             swipeRefreshLayout.setOnRefreshListener {
                 viewModel.setEvent(HomeContract.Event.OnFetchCars)
@@ -102,9 +102,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun goToDetails(carId: Int) {
+    private fun goToDetails(carId: Int, extras: FragmentNavigator.Extras) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(carId)
-        navigate(action)
+        navigate(action, extras)
     }
 
     private fun setupAdapter() {

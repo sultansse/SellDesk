@@ -2,6 +2,8 @@ package com.software1t.selldesk.presentation.home_screen.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import com.software1t.selldesk.base.BaseRecyclerAdapter
 import com.software1t.selldesk.base.BaseViewHolder
@@ -9,7 +11,7 @@ import com.software1t.selldesk.databinding.ItemCarBinding
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 
 class CarsAdapter(
-    private val clickFunc: ((Int) -> Unit)? = null
+    private val clickFunc: ((Int, FragmentNavigator.Extras) -> Unit)? = null,
 ) : BaseRecyclerAdapter<CarUiModel, ItemCarBinding, CarsAdapter.CarViewHolder>(CarItemDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -21,13 +23,14 @@ class CarsAdapter(
 
     class CarViewHolder(
         private val binding: ItemCarBinding,
-        private val click: ((Int) -> Unit)? = null
+        private val click: ((Int, FragmentNavigator.Extras) -> Unit)? = null,
     ) : BaseViewHolder<CarUiModel, ItemCarBinding>(binding) {
 
         init {
             binding.root.setOnClickListener {
                 getRowItem()?.let {
-                    click?.invoke(it.id)
+                    val extras = FragmentNavigatorExtras(binding.ivCarImage to "image_transition")
+                    click?.invoke(it.id, extras)
                 }
 
             }
