@@ -17,10 +17,6 @@ class SquareLinearLayoutView @JvmOverloads constructor(
 
     var rootClick: (() -> Unit)? = null
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, widthMeasureSpec)
-    }
-
     init {
         setAttrs(attrs, R.styleable.SquareLinearLayoutView) {
             squareBinding.ivIcon.setImageResource(
