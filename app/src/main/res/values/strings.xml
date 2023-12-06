@@ -16,7 +16,7 @@
     <string name="value_generation">2017 - 2021 XV70</string>
     <string name="key_mileage">Mileage</string>
     <string name="value_mileage">83,000 km</string>
-    <string name="key_transmission">Transmission</string>
+    <string name="key_transmission">Details</string>
     <string name="value_transmission">Automatic</string>
     <string name="key_drive">Drive</string>
     <string name="value_drive">Front-wheel drive</string>

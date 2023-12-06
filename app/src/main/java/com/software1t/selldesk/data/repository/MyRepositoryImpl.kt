@@ -18,7 +18,9 @@ class MyRepositoryImpl(
     }
 
     override suspend fun getCarItem(id: Int): CarDomainModel {
-        TODO("Not yet implemented")
+        val carData = localDataSource.getCarItem(id)
+        val carDomain = carMapper.from(carData)
+        return carDomain
     }
 
     override suspend fun getCarItems(): List<CarDomainModel> {

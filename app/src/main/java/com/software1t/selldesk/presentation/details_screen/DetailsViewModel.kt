@@ -2,16 +2,22 @@ package com.software1t.selldesk.presentation.details_screen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.software1t.selldesk.base.BaseViewModel
 import com.software1t.selldesk.base.adapter.DelegateAdapterModel
+import com.software1t.selldesk.common.Resource
 import com.software1t.selldesk.common.extenshions.tenge
 import com.software1t.selldesk.common.model.DividerAdapterModel
+import com.software1t.selldesk.domain.GetCarUseCase
 import com.software1t.selldesk.presentation.details_screen.model.DescriptionAdapterModel
 import com.software1t.selldesk.presentation.details_screen.model.HeaderAdapterModel
+import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    private val itemComposer: DetailsComposer
+    private val itemComposer: DetailsComposer,
+    private val getCar: GetCarUseCase,
 ) : BaseViewModel<DetailsContract.Event, DetailsContract.State, DetailsContract.Effect>() {
+
 
     private val _adapterItems = MutableLiveData<List<DelegateAdapterModel>>()
     val adapterItems: LiveData<List<DelegateAdapterModel>> get() = _adapterItems
@@ -28,7 +34,44 @@ class DetailsViewModel(
     }
 
     override fun handleEvent(event: DetailsContract.Event) {
-        TODO("Not yet implemented")
+        when (event) {
+            is DetailsContract.Event.OnFetchCar -> {
+                fetchCar(event.carId)
+            }
+        }
+    }
+
+    private fun fetchCar(carId: Int) {
+        viewModelScope.launch {
+            getCar.execute(carId).collect() {
+                when (it) {
+                    is Resource.Loading -> {
+                        setState { copy(carsState = DetailsContract.CarsState.Loading) }
+                    }
+
+                    is Resource.Success -> {
+                        val header = HeaderAdapterModel(
+                            carName = it.data.name,
+                            carPrice = it.data.price,
+                        )
+                        val description = DescriptionAdapterModel(
+                            city = it.data.city,
+                            generation = "2017 - 2021 XV70",
+                            mileage = "100 000",
+                            transmission = it.data.description,
+                            drive = "4wd",
+                        )
+                        val divider = DividerAdapterModel(true)
+                        _adapterItems.value = listOf(header, description, divider)
+                    }
+
+                    is Resource.Error -> {
+                        setEffect { DetailsContract.Effect.ShowError(message = it.errorBody) }
+                    }
+                }
+
+            }
+        }
     }
 
     init {

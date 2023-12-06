@@ -8,6 +8,8 @@ import com.software1t.selldesk.data.repository.LocalDataSource
 import com.software1t.selldesk.data.repository.MyRepositoryImpl
 import com.software1t.selldesk.domain.ClearDatabaseUseCase
 import com.software1t.selldesk.domain.ClearDatabaseUseCaseImpl
+import com.software1t.selldesk.domain.GetCarUseCase
+import com.software1t.selldesk.domain.GetCarUseCaseImpl
 import com.software1t.selldesk.domain.GetCarsUseCase
 import com.software1t.selldesk.domain.GetCarsUseCaseImpl
 import com.software1t.selldesk.domain.GetFavoriteCarsUseCase
@@ -37,6 +39,9 @@ fun providePopulateDbUseCase(repo: MyRepository): PopulateDbUseCase =
 
 fun provideGetCarsUseCase(repo: MyRepository, mapper: CarDomainUiMapper): GetCarsUseCase =
     GetCarsUseCaseImpl(repo, mapper)
+
+fun provideGetCarUseCase(repo: MyRepository, mapper: CarDomainUiMapper): GetCarUseCase =
+    GetCarUseCaseImpl(repo, mapper)
 
 fun provideClearDatabaseUseCase(repo: MyRepository): ClearDatabaseUseCase =
     ClearDatabaseUseCaseImpl(repo)

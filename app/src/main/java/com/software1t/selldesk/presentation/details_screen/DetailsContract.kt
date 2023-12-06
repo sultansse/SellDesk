@@ -8,7 +8,7 @@ import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 class DetailsContract {
 
     sealed class Event : UiEvent {
-        object OnFetchCars : Event()
+        data class OnFetchCar(val carId: Int) : Event()
     }
 
     data class State(

@@ -19,7 +19,9 @@ class LocalDataSourceImpl(
     }
 
     override suspend fun getCarItem(id: Int): CarDataModel {
-        TODO("Not yet implemented")
+        val carLocal = carDao.getCarItem(id)
+        val carData = carMapper.from(carLocal)
+        return carData
     }
 
     override suspend fun getCarItems(): List<CarDataModel> {

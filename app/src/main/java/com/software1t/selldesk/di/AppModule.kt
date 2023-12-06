@@ -3,6 +3,7 @@ package com.software1t.selldesk.di
 import com.software1t.selldesk.data.mapper.CarDataDomainMapper
 import com.software1t.selldesk.data.repository.LocalDataSource
 import com.software1t.selldesk.domain.ClearDatabaseUseCase
+import com.software1t.selldesk.domain.GetCarUseCase
 import com.software1t.selldesk.domain.GetCarsUseCase
 import com.software1t.selldesk.domain.GetFavoriteCarsUseCase
 import com.software1t.selldesk.domain.MyRepository
@@ -49,6 +50,7 @@ val repositoryModule = module {
 val useCaseModule = module {
     factory<PopulateDbUseCase> { providePopulateDbUseCase(repo = get()) }
     factory<GetCarsUseCase> { provideGetCarsUseCase(repo = get(), mapper = get()) }
+    factory<GetCarUseCase> { provideGetCarUseCase(repo = get(), mapper = get()) }
     factory<ClearDatabaseUseCase> { provideClearDatabaseUseCase(repo = get()) }
     factory<GetFavoriteCarsUseCase> { provideGetFavoriteCarsUseCase(repo = get(), mapper = get()) }
 }
@@ -67,6 +69,7 @@ val viewModelModule = module {
     viewModel {
         DetailsViewModel(
             itemComposer = get(),
+            getCar = get(),
         )
     }
     viewModel {

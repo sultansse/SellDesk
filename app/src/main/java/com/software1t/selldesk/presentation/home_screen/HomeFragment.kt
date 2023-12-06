@@ -60,8 +60,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                         is HomeContract.CarsState.Loading -> {
                             with(binding) {
-                                animationView.isVisible = false
-                                rvCars.isVisible = false
                                 rvVeil.veil()
                             }
                         }

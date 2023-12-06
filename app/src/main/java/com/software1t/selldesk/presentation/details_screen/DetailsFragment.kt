@@ -25,7 +25,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private val viewModel: DetailsViewModel by viewModel()
     private val args: DetailsFragmentArgs by navArgs()
 
-
     private val compositeAdapter by lazy {
         CompositeAdapter.Builder()
             .add(DetailsHeaderAdapter())
@@ -33,7 +32,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             .add(DetailsDescriptionAdapter())
             .build()
     }
-
 
     override fun prepareView(savedInstanceState: Bundle?) {
         with(binding) {
@@ -47,38 +45,15 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             rvComposite.adapter = compositeAdapter
         }
 
-        with(viewModel) {
-            adapterItems.observe(viewLifecycleOwner) {
-                compositeAdapter.submitList(it)
-            }
-        }
         initObservers()
+        with(viewModel) {
+            setEvent(DetailsContract.Event.OnFetchCar(args.carId))
+        }
     }
 
-
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
-
-//                    when (val state = it.carsState) {
-//                        is HomeContract.CarsState.Idle -> {
-//                            binding.loadingPb.isVisible = false
-//                        }
-//
-//                        is HomeContract.CarsState.Loading -> {
-//                            binding.loadingPb.isVisible = true
-//                        }
-//
-//                        is HomeContract.CarsState.Success -> {
-//                            val data = state.cars
-//                            carsAdapter.submitList(data)
-//                            binding.loadingPb.isVisible = false
-//                        }
-//                    }
-
-                }
-            }
+        viewModel.adapterItems.observe(viewLifecycleOwner) {
+            compositeAdapter.submitList(it)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
