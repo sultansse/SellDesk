@@ -28,5 +28,9 @@
     <string name="share">Share</string>
     <string name="more">More</string>
     <string name="messages_not_found_title">Oops, no messages yet</string>
+    <string name="str_title">Selling Car is Easy!</string>
+    <string name="create_new_post">Create Post</string>
+    <string name="str_subtitle">10 000 customers are waiting for your announcement</string>
+
 
 </resources>

@@ -26,6 +26,8 @@
     <string name="share">Поделиться</string>
     <string name="more">Еще</string>
     <string name="messages_not_found_title">Упс, сообщении пока не наблюдается :)</string>
-
+    <string name="str_title">Продать Авто - Легко!</string>
+    <string name="create_new_post">Создать объявление</string>
+    <string name="str_subtitle">10 000 покупателей ждут ваше объявление</string>
 
 </resources>
