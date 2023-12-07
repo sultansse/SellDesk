@@ -28,8 +28,7 @@
             android:id="@+id/iv_car_image"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
-            android:layout_height="120dp"
-            android:padding="8dp"
+            android:layout_height="240dp"
             android:src="@drawable/ic_launcher_app" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -41,6 +40,7 @@
         android:layout_margin="4dp"
         android:text="Car Name"
         android:textStyle="bold"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_view" />
 
@@ -50,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:text="2017"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_car_name"
         app:layout_constraintStart_toEndOf="@+id/tv_car_name"
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:text="Price"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_car_name" />

@@ -5,26 +5,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.software1t.selldesk.base.BaseRecyclerAdapter
 import com.software1t.selldesk.base.BaseViewHolder
-import com.software1t.selldesk.databinding.ItemCarBinding
+import com.software1t.selldesk.databinding.ItemCarFavoritesBinding
 import com.software1t.selldesk.presentation.home_screen.model.CarUiModel
 
 class FavoriteCarsAdapter(
     private val clickFunc: ((Int) -> Unit)? = null
-) : BaseRecyclerAdapter<CarUiModel, ItemCarBinding, FavoriteCarsAdapter.CarViewHolder>(
+) : BaseRecyclerAdapter<CarUiModel, ItemCarFavoritesBinding, FavoriteCarsAdapter.CarViewHolder>(
     FavoriteCarItemDiffUtil()
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
-        val binding = ItemCarBinding.inflate(
+        val binding = ItemCarFavoritesBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         return CarViewHolder(binding = binding, click = clickFunc)
     }
 
     class CarViewHolder(
-        private val binding: ItemCarBinding,
+        private val binding: ItemCarFavoritesBinding,
         private val click: ((Int) -> Unit)? = null
-    ) : BaseViewHolder<CarUiModel, ItemCarBinding>(binding) {
+    ) : BaseViewHolder<CarUiModel, ItemCarFavoritesBinding>(binding) {
 
         init {
             binding.root.setOnClickListener {
