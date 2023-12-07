@@ -11,6 +11,7 @@ import com.software1t.selldesk.common.model.DividerAdapterModel
 import com.software1t.selldesk.domain.GetCarUseCase
 import com.software1t.selldesk.presentation.details_screen.model.DescriptionAdapterModel
 import com.software1t.selldesk.presentation.details_screen.model.HeaderAdapterModel
+import com.software1t.selldesk.presentation.details_screen.model.ImageAdapterModel
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
@@ -50,6 +51,9 @@ class DetailsViewModel(
                     }
 
                     is Resource.Success -> {
+                        val image = ImageAdapterModel(
+                            carImage = it.data.image,
+                        )
                         val header = HeaderAdapterModel(
                             carName = it.data.name,
                             carPrice = it.data.price,
@@ -62,7 +66,7 @@ class DetailsViewModel(
                             drive = "4wd",
                         )
                         val divider = DividerAdapterModel(true)
-                        _adapterItems.value = listOf(header, description, divider)
+                        _adapterItems.value = listOf(image, header, description, divider)
                     }
 
                     is Resource.Error -> {

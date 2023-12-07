@@ -19,12 +19,6 @@
             app:toolbar_share_btn_visibility="true"
             app:toolbar_title="@string/app_name" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_car_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/toyota2" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_composite"
             android:layout_width="match_parent"

@@ -14,6 +14,7 @@ import com.software1t.selldesk.common.delegates.DividerItemAdapter
 import com.software1t.selldesk.databinding.FragmentDetailsBinding
 import com.software1t.selldesk.presentation.details_screen.adapter.DetailsDescriptionAdapter
 import com.software1t.selldesk.presentation.details_screen.adapter.DetailsHeaderAdapter
+import com.software1t.selldesk.presentation.details_screen.adapter.DetailsImageAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,6 +28,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private val compositeAdapter by lazy {
         CompositeAdapter.Builder()
+            .add(DetailsImageAdapter())
             .add(DetailsHeaderAdapter())
             .add(DividerItemAdapter())
             .add(DetailsDescriptionAdapter())
@@ -35,7 +37,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     override fun prepareView(savedInstanceState: Bundle?) {
         with(binding) {
-            ivCarImage.transitionName = args.carId.toString()
             toolbar.likeClick = {
                 Toast.makeText(requireContext(), "like", Toast.LENGTH_SHORT).show()
             }
